@@ -1,0 +1,525 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\admin.css",
+      "PackagePath": "staticwebassets\\css\\admin.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\auth.css",
+      "PackagePath": "staticwebassets\\css\\auth.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\booking-filters.css",
+      "PackagePath": "staticwebassets\\css\\booking-filters.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\cartelera.css",
+      "PackagePath": "staticwebassets\\css\\cartelera.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\cinecenter-custom.css",
+      "PackagePath": "staticwebassets\\css\\cinecenter-custom.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\components\\digital-clock.css",
+      "PackagePath": "staticwebassets\\css\\components\\digital-clock.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\components\\mobile-menu.css",
+      "PackagePath": "staticwebassets\\css\\components\\mobile-menu.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\components\\user-dropdown.css",
+      "PackagePath": "staticwebassets\\css\\components\\user-dropdown.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\normalize.css",
+      "PackagePath": "staticwebassets\\css\\normalize.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\css\\tickets.css",
+      "PackagePath": "staticwebassets\\css\\tickets.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Atracciones\\plaza_comidas.jpg",
+      "PackagePath": "staticwebassets\\img\\Atracciones\\plaza_comidas.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Atracciones\\skybox.jpeg",
+      "PackagePath": "staticwebassets\\img\\Atracciones\\skybox.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Atracciones\\skybox.jpg",
+      "PackagePath": "staticwebassets\\img\\Atracciones\\skybox.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Atracciones\\skyjump.jpg",
+      "PackagePath": "staticwebassets\\img\\Atracciones\\skyjump.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\Amor.png",
+      "PackagePath": "staticwebassets\\img\\Categorias\\Amor.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\Amor2.png",
+      "PackagePath": "staticwebassets\\img\\Categorias\\Amor2.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\Estrenos.png",
+      "PackagePath": "staticwebassets\\img\\Categorias\\Estrenos.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\Terror.jpg",
+      "PackagePath": "staticwebassets\\img\\Categorias\\Terror.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\Terror2.jpg",
+      "PackagePath": "staticwebassets\\img\\Categorias\\Terror2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\animacion.png",
+      "PackagePath": "staticwebassets\\img\\Categorias\\animacion.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\cienci_ficcion.png",
+      "PackagePath": "staticwebassets\\img\\Categorias\\cienci_ficcion.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Categorias\\terror.png",
+      "PackagePath": "staticwebassets\\img\\Categorias\\terror.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Combos\\combo_1.jpg",
+      "PackagePath": "staticwebassets\\img\\Combos\\combo_1.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Combos\\combo_2.jpg",
+      "PackagePath": "staticwebassets\\img\\Combos\\combo_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Combos\\combo_3.jpg",
+      "PackagePath": "staticwebassets\\img\\Combos\\combo_3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Combos\\combo_4.jpg",
+      "PackagePath": "staticwebassets\\img\\Combos\\combo_4.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Contador2.jpeg",
+      "PackagePath": "staticwebassets\\img\\Contador2.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_01.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_01.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_02.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_02.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_2D.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_2D.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_2D_2.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_2D_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_3D.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_3D.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_3D_2.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_3D_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_4D.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_4D.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\Imagen_4D_2.jpg",
+      "PackagePath": "staticwebassets\\img\\Imagen_4D_2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\cineCenter.jpeg",
+      "PackagePath": "staticwebassets\\img\\cineCenter.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\cineCenter.jpg",
+      "PackagePath": "staticwebassets\\img\\cineCenter.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\cineCenter.png",
+      "PackagePath": "staticwebassets\\img\\cineCenter.png"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\15.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\15.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\25.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\25.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\28.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\28.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\32.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\32.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\33.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\33.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\34.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\34.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\ElAro.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\ElAro.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\Snoopy.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\Snoopy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\blanca_nieves.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\blanca_nieves.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\corazones_malheridos.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\corazones_malheridos.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\culpa_tuya.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\culpa_tuya.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\el_pozo.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\el_pozo.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\entre_vida_muerte.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\entre_vida_muerte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\guardianes_galaxia3.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\guardianes_galaxia3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\infierno_pantano.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\infierno_pantano.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\intensamente2.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\intensamente2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\la_idea_de_tenerte.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\la_idea_de_tenerte.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\minecraft.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\minecraft.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\thunderbolts.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\thunderbolts.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\img\\peliculas\\tornados_cat5.jpg",
+      "PackagePath": "staticwebassets\\img\\peliculas\\tornados_cat5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\components\\cartelera.js",
+      "PackagePath": "staticwebassets\\js\\components\\cartelera.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\components\\digital-clock.js",
+      "PackagePath": "staticwebassets\\js\\components\\digital-clock.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\components\\site-ui.js",
+      "PackagePath": "staticwebassets\\js\\components\\site-ui.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\login.js",
+      "PackagePath": "staticwebassets\\js\\login.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\movie-detail-asp.js",
+      "PackagePath": "staticwebassets\\js\\movie-detail-asp.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\payment-modal.js",
+      "PackagePath": "staticwebassets\\js\\payment-modal.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\seat-selection-asp.js",
+      "PackagePath": "staticwebassets\\js\\seat-selection-asp.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\services\\index.js",
+      "PackagePath": "staticwebassets\\js\\services\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\js\\ticketFunctions.js",
+      "PackagePath": "staticwebassets\\js\\ticketFunctions.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.ASP_MVC_Prueba.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.ASP_MVC_Prueba.props",
+      "PackagePath": "build\\ASP_MVC_Prueba.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ASP_MVC_Prueba.props",
+      "PackagePath": "buildMultiTargeting\\ASP_MVC_Prueba.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.ASP_MVC_Prueba.props",
+      "PackagePath": "buildTransitive\\ASP_MVC_Prueba.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

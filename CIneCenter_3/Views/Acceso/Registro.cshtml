@@ -1,0 +1,86 @@
+@model ASP_MVC_Prueba.Entidad.CreateUser
+
+@{
+    ViewData["Title"] = "Registro";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - CineCenter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/auth.css">
+    <link rel="icon" type="image/png" href="~/assets/images/favicon.png">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box glow-border">
+            <div class="auth-header">
+                @if (!string.IsNullOrEmpty(ViewBag.LogoPath))
+                {
+                    <img src="@ViewBag.LogoPath" alt="CineCenter Logo" class="auth-logo">
+                }
+                else
+                {
+                    <img src="~/assets/images/logo.png" alt="CineCenter Logo" class="auth-logo">
+                }
+                <h1 class="auth-title">Crear Cuenta</h1>
+                <p class="auth-subtitle">Únete a CineCenter y disfruta de todas nuestras películas</p>
+            </div>
+
+            <form asp-action="Registro" method="post">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                
+                <div class="form-group">
+                    <label asp-for="NombreCompleto" class="form-label">Nombre Completo</label>
+                    <input asp-for="NombreCompleto" class="form-control" placeholder="Ingresa tu nombre completo" />
+                    <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label">Correo Electrónico</label>
+                    <input asp-for="Email" class="form-control" placeholder="ejemplo@email.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="Password" class="form-label">Contraseña</label>
+                    <input asp-for="Password" class="form-control" type="password" placeholder="••••••••" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                    <small class="form-text">La contraseña debe tener al menos 6 caracteres.</small>
+                </div>
+                
+                <div class="form-group">
+                    <label asp-for="ConfirmPassword" class="form-label">Confirmar Contraseña</label>
+                    <input asp-for="ConfirmPassword" class="form-control" type="password" placeholder="••••••••" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-user-plus"></i> Crear Cuenta
+                    </button>
+                </div>
+            </form>
+            
+            <div class="link-register">
+                <p>¿Ya tienes una cuenta? <a href="@Url.Action("Login", "Acceso")">Iniciar sesión</a></p>
+            </div>
+            
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <a href="@Url.Action("Index", "Home")" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Volver a la página principal
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+</body>
+</html>

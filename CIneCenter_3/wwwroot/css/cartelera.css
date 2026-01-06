@@ -1,0 +1,226 @@
+/* Estilos para la sección de cartelera */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.movie-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.movie-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.movie-poster {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+}
+
+.movie-poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.movie-rating {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: #ffc107;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+.movie-info {
+    padding: 15px;
+}
+
+.movie-title {
+    font-size: 1.1rem;
+    margin: 0 0 10px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.category-tag {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 3px 10px;
+    font-size: 0.75rem;
+    color: #666;
+}
+
+.ver-detalles-btn {
+    display: inline-block;
+    background-color: #0d6efd;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: background-color 0.3s;
+}
+
+.ver-detalles-btn:hover {
+    background-color: #0b5ed7;
+    color: white;
+}
+
+/* Estilos para los filtros de categoría */
+.category-filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.category-btn {
+    background-color: #f8f9fa;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 8px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.category-btn.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+.category-btn:hover:not(.active) {
+    background-color: #e9ecef;
+}
+
+/* Estilos para la paginación */
+.pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 5px;
+}
+
+.page-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid #ddd;
+    background-color: #fff;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.page-btn.active {
+    background-color: #0d6efd;
+    color: white;
+    border-color: #0d6efd;
+}
+
+.page-btn:hover:not(.active) {
+    background-color: #e9ecef;
+}
+
+/* Estados de carga y error */
+.loading-indicator {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+.error-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #dc3545;
+}
+
+.empty-message {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 40px;
+    color: #666;
+}
+
+/* Previsualizaciones de categorías */
+.category-preview-container {
+    margin: 30px 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.category-preview-content {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-width: 768px) {
+    .category-preview-content {
+        flex-direction: row;
+        height: 250px;
+    }
+}
+
+.category-preview-image {
+    flex: 1;
+    overflow: hidden;
+}
+
+.category-preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-preview-text {
+    flex: 1;
+    padding: 25px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.category-preview-text h3 {
+    margin-top: 0;
+    color: #0d6efd;
+}
+
+.view-movies-btn {
+    align-self: flex-start;
+    margin-top: 15px;
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.view-movies-btn:hover {
+    background-color: #0b5ed7;
+}

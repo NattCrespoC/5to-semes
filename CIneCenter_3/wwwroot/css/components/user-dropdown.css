@@ -1,0 +1,99 @@
+/* Estilos para el menú desplegable de usuario */
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.user-menu-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.user-menu-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.user-menu-btn i {
+    margin-right: 8px;
+}
+
+.user-menu-btn .fa-chevron-down {
+    margin-left: 8px;
+    font-size: 0.8em;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fff;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1000;
+    border-radius: 4px;
+    right: 0;
+}
+
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background-color 0.2s;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown-content a i {
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+.dropdown-content .user-info {
+    padding: 12px 16px;
+    border-bottom: 1px solid #eee;
+    background-color: #f8f9fa;
+}
+
+.dropdown-content .user-info p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.dropdown-content .user-info .user-email {
+    color: #666;
+    font-size: 0.8em;
+}
+
+.dropdown-content .user-info .user-type {
+    display: inline-block;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.75em;
+    margin-top: 4px;
+}
+
+.user-type.admin {
+    background-color: #e91e63;
+    color: white;
+}
+
+.user-type.regular {
+    background-color: #2196f3;
+    color: white;
+}
+
+/* Mostrar el menú cuando está activo */
+.user-dropdown.active .dropdown-content {
+    display: block;
+}

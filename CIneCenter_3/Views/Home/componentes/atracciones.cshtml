@@ -1,0 +1,97 @@
+﻿<div class="particles"></div>
+<h2 class="attractions-title">Entretenimiento</h2>
+
+<!-- Carrusel Mejorado -->
+<div class="special-carousel">
+    <div class="special-carousel-inner">
+        <!-- Plaza de Comidas -->
+        <div class="special-slide" data-attraction="plaza-comidas">
+            <div class="special-slide-image">
+                <img src="./img/Atracciones/plaza_comidas.jpg" alt="Plaza de Comidas">
+                <div class="special-slide-overlay">
+                    <h3>Plaza de Comidas</h3>
+                    <p>Disfruta de una variedad gastronómica para todos los gustos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skybox -->
+        <div class="special-slide" data-attraction="skybox">
+            <div class="special-slide-image">
+                <img src="./img/Atracciones/skybox.jpeg" alt="Skybox Sala de Juegos">
+                <div class="special-slide-overlay">
+                    <h3>Skybox</h3>
+                    <p>Diviértete en nuestra moderna sala de videojuegos</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sky Jump -->
+        <div class="special-slide" data-attraction="skyjump">
+            <div class="special-slide-image">
+                <img src="./img/Atracciones/skyjump.jpg" alt="Sky Jump Trampolines">
+                <div class="special-slide-overlay">
+                    <h3>Sky Jump</h3>
+                    <p>Salta y vuela en nuestros trampolines de última generación</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navegación del carrusel -->
+    <div class="special-carousel-controls">
+        <button class="special-nav-btn prev-special">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <div class="special-indicators">
+            <span class="special-indicator active" data-index="0"></span>
+            <span class="special-indicator" data-index="1"></span>
+            <span class="special-indicator" data-index="2"></span>
+        </div>
+        <button class="special-nav-btn next-special">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</div>
+
+<!-- Detalles de cada atracción -->
+<div class="attraction-details-container">
+    <div class="attraction-details active" id="plaza-comidas">
+        <h3>Plaza de Comidas</h3>
+        <p>Nuestra amplia plaza de comidas ofrece una experiencia gastronómica completa con opciones para todos los gustos. Desde comida rápida hasta opciones gourmet, disfruta de la mejor gastronomía antes o después de tu película favorita en un ambiente moderno y acogedor.</p>
+        <div class="attraction-features">
+            <span class="feature-tag"><i class="fas fa-utensils"></i> Variedad culinaria</span>
+            <span class="feature-tag"><i class="fas fa-clock"></i> Abierto todo el día</span>
+            <span class="feature-tag"><i class="fas fa-chair"></i> Amplio espacio</span>
+            <span class="feature-tag"><i class="fas fa-wifi"></i> Wi-Fi gratis</span>
+            <span class="feature-tag"><i class="fas fa-birthday-cake"></i> Ideal para eventos</span>
+        </div>
+    </div>
+
+    <div class="attraction-details" id="skybox">
+        <h3>Skybox - Sala de Juegos</h3>
+        <p>La experiencia de entretenimiento definitiva para los amantes de los videojuegos y juegos arcade. Skybox cuenta con los últimos títulos y tecnologías en un espacio diseñado para maximizar la diversión, con sistemas de última generación, pantallas HD y un ambiente futurista que te transportará a otra dimensión.</p>
+        <div class="attraction-features">
+            <span class="feature-tag"><i class="fas fa-gamepad"></i> Últimos videojuegos</span>
+            <span class="feature-tag"><i class="fas fa-trophy"></i> Competiciones semanales</span>
+            <span class="feature-tag"><i class="fas fa-users"></i> Modo multijugador</span>
+            <span class="feature-tag"><i class="fas fa-headset"></i> Realidad Virtual</span>
+            <span class="feature-tag"><i class="fas fa-ticket-alt"></i> Sistema de premios</span>
+        </div>
+    </div>
+
+    <div class="attraction-details" id="skyjump">
+        <h3>Sky Jump - Trampolines</h3>
+        <p>¡Desafía la gravedad en nuestro parque de trampolines Sky Jump! Un espacio diseñado para la diversión y la adrenalina donde podrás saltar, hacer acrobacias y experimentar la sensación de vuelo en un entorno seguro y monitoreado. Perfecto para todas las edades, desde niños hasta adultos que quieren liberar energía.</p>
+        <div class="attraction-features">
+            <span class="feature-tag"><i class="fas fa-running"></i> Trampolines profesionales</span>
+            <span class="feature-tag"><i class="fas fa-shield-alt"></i> Supervisión constante</span>
+            <span class="feature-tag"><i class="fas fa-child"></i> Para todas las edades</span>
+            <span class="feature-tag"><i class="fas fa-basketball-ball"></i> Zona de slam dunk</span>
+            <span class="feature-tag"><i class="fas fa-smile"></i> ¡Diversión garantizada!</span>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script src="~/js/components/carousel-3d.js" asp-append-version="true"></script>
+}

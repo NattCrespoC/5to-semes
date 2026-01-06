@@ -1,0 +1,80 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong><i class="fas fa-exclamation-circle me-2"></i>Error:</strong> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong><i class="fas fa-check-circle me-2"></i>¡Éxito!</strong> @TempData["SuccessMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<main>
+
+    <!-- 1. BIENVENIDA -->
+    <section id="inicio" class="section-block">
+        <div class="hero">
+            <h1>Bienvenido a Cine Center</h1>
+            <p>Tu portal cinematográfico favorito</p>
+        </div>
+    </section>
+
+    <!-- 2. MISIÓN Y VISIÓN -->
+    <section id="mision-vision" class="section-block">
+        <h2 class="section-title">Sobre Nosotros</h2>
+
+        <div class="mision-vision-container flex-horizontal">
+            <div class="mision-box flex-item">
+                <div class="mv-content-wrapper">
+                    <div class="mv-text">
+                        <h3 class="section-subtitle">Misión</h3>
+                        <p>Brindar experiencias cinematográficas de alta calidad a través de tecnología de última generación, un amplio catálogo de películas nacionales e internacionales, y servicios complementarios que aseguren confort, entretenimiento y satisfacción a todos nuestros visitantes.</p>
+                    </div>
+                    <div class="mv-image-container">
+                        <img src="./img/Imagen_01.jpg" alt="Imagen Misión" class="mv-image">
+                    </div>
+                </div>
+            </div>
+            <div class="vision-box flex-item">
+                <div class="mv-content-wrapper">
+                    <div class="mv-text">
+                        <h3 class="section-subtitle">Visión</h3>
+                        <p>Consolidarnos como el principal centro de entretenimiento cinematográfico del país, siendo reconocidos por la innovación, excelencia en el servicio y compromiso con el desarrollo cultural y social de nuestra comunidad.</p>
+                    </div>
+                    <div class="mv-image-container">
+                        <img src="./img/Imagen_02.jpg" alt="Imagen Visión" class="mv-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. ATRACCIONES (CARRUSEL AVANZADO) -->
+    <section id="atracciones" class="section-block attractions-section">
+        @await Html.PartialAsync("componentes/atracciones")
+    </section>
+
+    <!-- 4. COMBOS (CARRUSEL NORMAL) -->
+    <section id="combos" class="section-block">
+        @await Html.PartialAsync("componentes/combos")
+    </section>
+
+    <!-- 5. CARTELERA -->
+    <section id="cartelera" class="section-block">
+        @await Html.PartialAsync("componentes/cartelera")
+    </section>
+    <!-- 6. FORMATOS -->
+    <section id="formatos" class="section-block formats-section">
+        @await Html.PartialAsync("componentes/formatos")
+    </section>
+</main>
+

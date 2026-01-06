@@ -1,0 +1,106 @@
+@model List<ASP_MVC_Prueba.Controllers.PeliculaTicketsViewModel>
+@{
+    ViewData["Title"] = "Administración de Tickets";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">
+        <i class="fas fa-ticket-alt me-2 text-primary"></i>Administración de Tickets
+    </h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item active">Tickets por Película</li>
+    </ol>
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <p class="mb-0">Seleccione una película para ver sus horarios y tickets vendidos</p>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header">
+            <i class="fas fa-film me-1"></i>
+            Películas con Tickets Vendidos
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>
+                                <i class="fas fa-film me-2 text-primary"></i>
+                                Película
+                            </th>
+                            <th>
+                                <i class="fas fa-tag me-2 text-primary"></i>
+                                Género
+                            </th>
+                            <th>
+                                <i class="fas fa-ticket-alt me-2 text-primary"></i>
+                                Total Tickets
+                            </th>
+                            <th>
+                                <i class="fas fa-dollar-sign me-2 text-primary"></i>
+                                Total Ventas
+                            </th>
+                            <th>
+                                <i class="fas fa-cogs me-2 text-primary"></i>
+                                Acciones
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="/img/peliculas/@item.Pelicula.Imagen" class="img-thumbnail me-3" 
+                                             style="width: 50px; height: 50px; object-fit: cover;" 
+                                             onerror="this.src='https://via.placeholder.com/50x50?text=Sin+Imagen'" />
+                                        <span class="fw-bold">@item.Pelicula.Titulo</span>
+                                    </div>
+                                </td>
+                                <td><span class="badge bg-info">@item.Pelicula.Genero</span></td>
+                                <td>
+                                    <span class="badge bg-success">@item.TotalTickets</span>
+                                </td>
+                                <td>
+                                    <span class="badge bg-primary">$@item.TotalVentas.ToString("N2")</span>
+                                </td>
+                                <td>
+                                    <a asp-action="HorariosPelicula" asp-route-id="@item.Pelicula.Id_Peliculas" 
+                                       class="btn btn-sm btn-primary">
+                                        <i class="fas fa-clock me-2"></i>Ver Horarios
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center py-4">
+                                    <div class="alert alert-info mb-0">
+                                        <i class="fas fa-info-circle me-2"></i>No hay películas con tickets vendidos
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+        });
+    </script>
+}

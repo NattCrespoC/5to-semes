@@ -1,0 +1,215 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ASP_MVC_Prueba
+build_property.RootNamespace = ASP_MVC_Prueba
+build_property.ProjectDir = C:\Users\natal\Desktop\nattytareas\5tosemestre\Taller de Programacion\Proyecto Final BD,Analisis,Taller\CIneCenter_3\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\natal\Desktop\nattytareas\5tosemestre\Taller de Programacion\Proyecto Final BD,Analisis,Taller\CIneCenter_3
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Acceso/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXExvZ2luLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Acceso/Registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjZXNvXFJlZ2lzdHJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/AccessDenied.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBY2Nlc3NEZW5pZWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/componentes/atracciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb21wb25lbnRlc1xhdHJhY2Npb25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/componentes/cartelera.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb21wb25lbnRlc1xjYXJ0ZWxlcmEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/componentes/combos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb21wb25lbnRlc1xjb21ib3MuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/componentes/footer.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb21wb25lbnRlc1xmb290ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/componentes/formatos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb21wb25lbnRlc1xmb3JtYXRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/componentes/Header.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxjb21wb25lbnRlc1xIZWFkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/Detalles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZXRhbGxlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/HorarioDetalle.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxIb3JhcmlvRGV0YWxsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/MisTickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxNaXNUaWNrZXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/modales/inicio_sesion.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxtb2RhbGVzXGluaWNpb19zZXNpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/modales/registro.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxtb2RhbGVzXHJlZ2lzdHJvLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/Perfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQZXJmaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Home/Tickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxUaWNrZXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/_MonthSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcX01vbnRoU2NoZWR1bGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/_RoomSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcX1Jvb21TY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Horarios/_WeekSchedule.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9yYXJpb3NcX1dlZWtTY2hlZHVsZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Pelicula/AdminPelis.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsaWN1bGFcQWRtaW5QZWxpcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Pelicula/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsaWN1bGFcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Pelicula/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVsaWN1bGFcRWRpdGFyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Reportes/ReporteFormatosPreferidos.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZUZvcm1hdG9zUHJlZmVyaWRvcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Reportes/ReporteGenerosMasPopulares.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZUdlbmVyb3NNYXNQb3B1bGFyZXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Reportes/ReportePelisGanancia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZVBlbGlzR2FuYW5jaWEuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Reportes/ReporteVentasDiarias.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0ZXNcUmVwb3J0ZVZlbnRhc0RpYXJpYXMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Tickets/HorariosPelicula.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0c1xIb3Jhcmlvc1BlbGljdWxhLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Tickets/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0c1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Tickets/MisTickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0c1xNaXNUaWNrZXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Tickets/TicketsHorario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGlja2V0c1xUaWNrZXRzSG9yYXJpby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Usuario/AdminUsuarios.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xBZG1pblVzdWFyaW9zLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Usuario/ConfirmDelete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDb25maXJtRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Usuario/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/Usuario/Editar.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXN1YXJpb1xFZGl0YXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/natal/Desktop/nattytareas/5tosemestre/Taller de Programacion/Proyecto Final BD\,Analisis\,Taller/CIneCenter_3/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 

@@ -1,0 +1,450 @@
+/* Base styles for movie detail page */
+.movie-container2 {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    padding-top: 80px;
+}
+
+.movie-header2 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    margin-top: 20px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.back-button2 {
+    padding: 10px 15px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: var(--text-color);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.back-button:hover2 {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.movie-title-section2 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.movie-title2 {
+    font-size: 2.5rem;
+    margin: 0;
+    color: var(--accent-color);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.movie-year2 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.movie-rating2 {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.main-content2 {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 30px;
+}
+
+.trailer-section2 {
+    background-color: rgba(30, 41, 82, 0.8);
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid var(--primary-color);
+}
+
+.trailer-section h2 {
+    color: var(--accent-color);
+    padding: 15px;
+    margin: 0;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.trailer-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+}
+
+.trailer-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.movie-info2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.movie-poster2 {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--primary-color);
+}
+
+.info-box2 {
+    border: 1px solid var(--primary-color);
+    background-color: rgba(30, 41, 82, 0.8);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.info-box2 h3 {
+    margin-top: 0;
+    border-bottom: 1px solid var(--primary-color);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: var(--accent-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.info-box2 h4 {
+    color: var(--accent-color);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.info-box2 p {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+.info-box2 strong {
+    color: var(--gradient-start);
+    font-weight: bold;
+}
+
+.categories2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.category-tag2 {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.synopsis2 {
+    margin-top: 30px;
+    line-height: 1.6;
+}
+
+.synopsis2 h2 {
+    color: var(--accent-color);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Estilos para la sección de reserva */
+.booking-section2 {
+    margin-top: 30px;
+    border: 1px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 20px;
+    background-color: rgba(30, 41, 82, 0.8);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.booking-title2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: var(--accent-color);
+    font-size: 1.5em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.booking-options2 {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.format-btn2 {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    border: 1px solid var(--gradient-start);
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.format-btn.selected2 {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+}
+
+.format-btn:hover2 {
+    transform: translateY(-3px);
+    box-shadow: 0 0 8px rgba(0, 204, 255, 0.8);
+}
+
+/* Estilos para los horarios */
+.schedules-container2 {
+    border-top: 1px solid var(--primary-color);
+    padding-top: 15px;
+}
+
+.schedule-section2 {
+    margin-bottom: 20px;
+}
+
+.schedule-section2 h4 {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+.time-list2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.time-btn2 {
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    border: 1px solid var(--gradient-start);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.time-btn:hover2 {
+    background-color: var(--secondary-color);
+    color: var(--accent-color);
+    box-shadow: 0 0 8px rgba(0, 204, 255, 0.8);
+    transform: translateY(-3px);
+}
+
+.premiere-badge2 {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    margin-left: 10px;
+}
+
+/* Social sharing buttons */
+.social-share2 {
+    margin-top: 20px;
+}
+
+.social-share2 h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.social-share-buttons2 {
+    display: flex;
+    gap: 10px;
+}
+
+.social-share-btn2 {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.social-share-btn:hover2 {
+    transform: scale(1.1);
+}
+
+.social-share-btn.facebook2 {
+    background-color: #3b5998;
+}
+
+.social-share-btn.twitter2 {
+    background-color: #1da1f2;
+}
+
+.social-share-btn.whatsapp2 {
+    background-color: #25d366;
+}
+
+.social-share-btn.instagram2 {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+/* Day filter styles */
+.booking-filters2 {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.day-options2 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 5px;
+}
+
+.day-btn2 {
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    border: 1px solid var(--gradient-start);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.day-btn2.selected {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+.day-btn2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Time of day sections */
+.time-section2 {
+    margin-bottom: 20px;
+}
+
+.time-heading2 {
+    font-size: 0.9rem;
+    color: #ccc;
+    margin-bottom: 8px;
+}
+
+.date-heading2 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin: 10px 0;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    text-transform: capitalize;
+}
+
+/* Buy button styles */
+.btn-comprar {
+    display: inline-block;
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.btn-comprar:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.btn-comprar i {
+    margin-right: 8px;
+}
+
+/* Active button states */
+.format-btn2.active, .day-btn2.active {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transform: scale(1.05);
+}
+
+.format-btn2:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+.day-btn2.selected {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+    transform: scale(1.05);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .main-content2 {
+        grid-template-columns: 1fr;
+    }
+    
+    .movie-header2 {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .movie-title-section2 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .booking-filters2,
+    .day-options2 {
+        flex-direction: column;
+    }
+    
+    .day-btn2 {
+        width: 100%;
+        text-align: center;
+    }
+}

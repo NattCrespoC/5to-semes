@@ -1,0 +1,52 @@
+:root {
+    --admin-primary: #3498db;
+    --admin-secondary: #2c3e50;
+    --admin-accent: #e74c3c;
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.admin-sidebar {
+    background-color: var(--admin-secondary);
+    min-height: 100vh;
+    padding-top: 2rem;
+    color: white;
+}
+
+.admin-content {
+    padding: 2rem;
+}
+
+.admin-nav .nav-link {
+    color: #e0e0e0;
+    padding: 0.8rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    transition: all 0.3s;
+}
+
+.admin-nav .nav-link:hover,
+.admin-nav .nav-link.active {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.admin-nav .nav-link i {
+    width: 24px;
+    text-align: center;
+    margin-right: 8px;
+}
+
+.admin-header {
+    background-color: white;
+    border-bottom: 1px solid #dee2e6;
+    padding: 1rem 0;
+    margin-bottom: 2rem;
+}
+
+.admin-title {
+    color: var(--admin-secondary);
+    font-weight: bold;
+}

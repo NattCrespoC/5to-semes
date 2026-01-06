@@ -1,0 +1,132 @@
+﻿@model IEnumerable<ASP_MVC_Prueba.Models.Peliculas>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <p class="mb-0">Administra todas las películas disponibles en el sistema</p>
+    <a asp-action="Create" class="btn btn-primary">
+        <i class="fas fa-plus-circle me-2"></i>Agregar película
+    </a>
+</div>
+
+<div class="card shadow-sm">
+    <div class="card-body p-0">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="table-light">
+                    <tr>
+                        <th>
+                            <i class="fas fa-video me-2 text-primary"></i>
+                            @Html.DisplayNameFor(model => model.Titulo)
+                        </th>
+                        <th>
+                            <i class="fas fa-tag me-2 text-primary"></i>
+                            @Html.DisplayNameFor(model => model.Genero)
+                        </th>
+                        <th>
+                            <i class="fas fa-clock me-2 text-primary"></i>
+                            @Html.DisplayNameFor(model => model.Duracion)
+                        </th>
+                        <th>
+                            <i class="fas fa-image me-2 text-primary"></i>
+                            @Html.DisplayNameFor(model => model.Imagen)
+                        </th>
+                        <th>
+                            <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                            @Html.DisplayNameFor(model => model.Estreno)
+                        </th>
+                        <th>
+                            <i class="fas fa-toggle-on me-2 text-primary"></i>
+                            Estado
+                        </th>
+                        <th>
+                            <i class="fas fa-cogs me-2 text-primary"></i>
+                            Acciones
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var item in Model) {
+                    <tr>
+                        <td>
+                            <div class="d-flex align-items-center">
+                                    <img src="/img/peliculas/@item.Imagen" class="img-thumbnail me-3" style="width: 50px; height: 50px; object-fit: cover;" onerror="this.src='https://via.placeholder.com/50x50?text=Sin+Imagen'">
+                                <span class="fw-bold">@item.Titulo</span>
+                            </div>
+                        </td>
+                        <td><span class="badge bg-info">@item.Genero</span></td>
+                        <td>@item.Duracion min</td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-outline-primary show-image" data-bs-toggle="modal" data-bs-target="#imageModal" data-image="/img/peliculas/@item.Imagen" data-title="@item.Titulo">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </td>
+                        <td>@((item.Estreno.HasValue && item.Estreno.Value) ? "Estreno" : "Catálogo")</td>
+                        <td>
+                            @if (item.Estado.HasValue && item.Estado.Value)
+                            {
+                                <span class="badge bg-success"><i class="fas fa-check-circle me-1"></i> Activa</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-danger"><i class="fas fa-times-circle me-1"></i> Inactiva</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group" role="group">
+                                <a asp-action="Editar" asp-route-id="@item.Id_Peliculas" class="btn btn-sm btn-outline-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                                <a asp-action="Detalle" asp-route-id="@item.Id_Peliculas" class="btn btn-sm btn-outline-info" data-bs-toggle="tooltip" data-bs-placement="top" title="Detalles">
+                                    <i class="fas fa-info-circle"></i>
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id_Peliculas" class="btn btn-sm btn-outline-danger" data-bs-toggle="tooltip" data-bs-placement="top" title="Eliminar">
+                                    <i class="fas fa-trash-alt"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para mostrar imagen -->
+<div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Imagen de película</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img id="modalImage" src="" class="img-fluid" alt="Imagen de película" onerror="this.src='https://via.placeholder.com/800x600?text=Sin+Imagen'">
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Inicializar tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        });
+        
+        // Manejo del modal de imagen
+        document.querySelectorAll('.show-image').forEach(button => {
+            button.addEventListener('click', function() {
+                const imageSrc = this.getAttribute('data-image');
+                const imageTitle = this.getAttribute('data-title');
+                document.getElementById('modalImage').src = imageSrc;
+                document.getElementById('imageModalLabel').textContent = 'Imagen de: ' + imageTitle;
+            });
+        });
+    });
+</script>
+}

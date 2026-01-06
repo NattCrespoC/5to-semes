@@ -1,0 +1,286 @@
+/* Carousel Styles */
+.carrusel-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    margin: 0 auto;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--gradient-start);
+}
+
+.combos-container {
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    margin: 0 auto 40px;
+    max-width: 1200px;
+}
+
+.combos-carousel-column {
+    flex: 1;
+    max-width: 500px;
+}
+
+.combos-description-column {
+    flex: 1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(26, 0, 51, 0.9), rgba(0, 102, 204, 0.8));
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--gradient-start);
+    color: var(--text-color);
+}
+
+.carrusel-wrapper {
+    display: flex;
+    width: 400%; /* 100% x número de slides */
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carrusel-slide {
+    position: relative;
+    width: 25%; /* 100% / número de slides */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--background-color);
+}
+
+.carrusel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cambiado de 'contain' a 'cover' para llenar el espacio */
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--primary-color);
+}
+
+.carrusel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(153, 51, 204, 0.6); /* Púrpura semi-transparente */
+    color: var(--text-color);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2;
+}
+
+.carrusel-button:hover {
+    background-color: var(--primary-color);
+    box-shadow: 0 0 8px var(--accent-color);
+}
+
+.prev-button {
+    left: 10px;
+}
+
+.next-button {
+    right: 10px;
+}
+
+.carrusel-indicators {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 204, 0, 0.5); /* Amarillo semi-transparente */
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.indicator.active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 5px var(--accent-color);
+}
+
+/* Combo Description Styles */
+.combo-description {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.combo-description.active {
+    display: block;
+}
+
+.combo-description h3 {
+    color: var(--accent-color);
+    font-size: 28px;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.combo-description p {
+    color: var(--text-color);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.combo-details {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.combo-price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffcc66; /* Naranja cálido para estimular el apetito pero en línea con el tema */
+    margin-bottom: 5px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+/* Nuevos elementos que reemplazan el botón de ordenar */
+.combo-badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.combo-badge {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    margin-right: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.combo-badge i {
+    margin-right: 5px;
+}
+
+.combo-badge.bestseller {
+    background: linear-gradient(to right, #ffd700, #ffaa00);
+    color: #333;
+}
+
+.combo-badge.availability {
+    background: linear-gradient(to right, #43cea2, #185a9d);
+}
+
+.combo-badge.spicy {
+    background: linear-gradient(to right, #ff416c, #ff4b2b);
+}
+
+.combo-badge.family {
+    background: linear-gradient(to right, #00b4db, #0083b0);
+}
+
+.combo-badge.discount {
+    background: linear-gradient(to right, #7b4397, #dc2430);
+}
+
+.combo-badge.new {
+    background: linear-gradient(to right, #fc4a1a, #f7b733);
+    color: #333;
+    animation: pulse 2s infinite;
+}
+
+.combo-badge.refill {
+    background: linear-gradient(to right, #56ab2f, #a8e063);
+    color: #333;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.combo-rating {
+    margin-top: 10px;
+}
+
+.combo-rating .stars {
+    color: #ffc107;
+    font-size: 18px;
+    letter-spacing: 2px;
+}
+
+.combo-rating .rating-count {
+    color: #bbbbbb;
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+/* Animation for auto-slide */
+@keyframes slide {
+    0% { transform: translateX(0); }
+    20% { transform: translateX(0); }
+    25% { transform: translateX(-25%); }
+    45% { transform: translateX(-25%); }
+    50% { transform: translateX(-50%); }
+    70% { transform: translateX(-50%); }
+    75% { transform: translateX(-75%); }
+    95% { transform: translateX(-75%); }
+    100% { transform: translateX(0); }
+}
+
+/* Responsiveness */
+@media (max-width: 900px) {
+    .combos-container {
+        flex-direction: column;
+    }
+    
+    .combos-carousel-column,
+    .combos-description-column {
+        max-width: 100%;
+    }
+    
+    .carrusel-container {
+        height: 350px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .carrusel-container {
+        height: 300px;
+    }
+    
+    .combo-description h3 {
+        font-size: 24px;
+    }
+}

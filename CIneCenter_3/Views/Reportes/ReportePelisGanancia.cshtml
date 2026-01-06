@@ -1,0 +1,202 @@
+﻿@model ASP_MVC_Prueba.Models.ResumenReporteViewModel
+@{  
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";  
+    ViewData["Title"] = "Reporte de Ganancias por Película";  
+}  
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="m-0"><i class="fas fa-chart-line me-2"></i>Resumen de Ganancias</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="border rounded p-3 text-center h-100">
+                            <h6 class="text-muted mb-2">Películas con Ventas</h6>
+                            <h2 class="mb-0 text-primary">@Model.TotalPeliculas</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="border rounded p-3 text-center h-100">
+                            <h6 class="text-muted mb-2">Total Tickets Vendidos</h6>
+                            <h2 class="mb-0 text-success">@Model.TotalTicketsGlobal</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="border rounded p-3 text-center h-100">
+                            <h6 class="text-muted mb-2">Ingresos Totales</h6>
+                            <h2 class="mb-0 text-danger">@Model.IngresosTotalesGlobal.ToString("N2") Bs</h2>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="border rounded p-3 text-center h-100">
+                            <h6 class="text-muted mb-2">Fecha del Reporte</h6>
+                            <h4 class="mb-0 text-info">@Model.FechaReporte.ToString("dd/MM/yyyy")</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">  
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">  
+        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-film me-2"></i>Ganancias por Película</h6>  
+        <div>
+            <button class="btn btn-sm btn-outline-primary" onclick="exportarPDF()">  
+                <i class="fas fa-file-pdf me-1"></i> Exportar PDF  
+            </button>  
+            <button class="btn btn-sm btn-outline-success" onclick="exportarExcel()">  
+                <i class="fas fa-file-excel me-1"></i> Exportar EXCEL  
+            </button>  
+            <button class="btn btn-sm btn-outline-info" onclick="exportarCSV()">  
+                <i class="fas fa-file-csv me-1"></i> Exportar CSV  
+            </button>
+        </div>
+    </div>  
+    <div class="card-body">  
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle me-2"></i>@ViewBag.ErrorMessage
+            </div>
+        }
+        
+        <div class="table-responsive">  
+            <table class="table table-bordered table-hover" id="reporteTable" width="100%" cellspacing="0">  
+                <thead class="table-dark">  
+                    <tr>  
+                        <th class="text-center">#</th>
+                        <th>Película</th>  
+                        <th class="text-center">Tickets Vendidos</th>  
+                        <th class="text-end">Ingresos Totales</th>  
+                    </tr>  
+                </thead>  
+                <tbody>  
+                    @if (Model.DetallesPeliculas != null && Model.DetallesPeliculas.Any())  
+                    {  
+                        @for (int i = 0; i < Model.DetallesPeliculas.Count; i++)
+                        {
+                            var item = Model.DetallesPeliculas[i];
+                            <tr>  
+                                <td class="text-center">@(i + 1)</td>
+                                <td>
+                                    <span class="fw-bold">@item.Titulo</span>
+                                </td>  
+                                <td class="text-center">
+                                    <span class="badge bg-success">@item.TotalTicketsVendidos</span>
+                                </td>  
+                                <td class="text-end">@item.IngresosTotales.ToString("N2") Bs</td>  
+                            </tr>  
+                        }  
+                    }  
+                    else  
+                    {  
+                        <tr>  
+                            <td colspan="4" class="text-center">
+                                <div class="alert alert-info mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>No hay datos disponibles
+                                </div>
+                            </td>  
+                        </tr>  
+                    }  
+                </tbody>
+                <tfoot class="table-dark">
+                    <tr>
+                        <th colspan="2" class="text-end">TOTALES:</th>
+                        <th class="text-center">@Model.TotalTicketsGlobal</th>
+                        <th class="text-end">@Model.IngresosTotalesGlobal.ToString("N2") Bs</th>
+                    </tr>
+                </tfoot>
+            </table>  
+        </div>  
+    </div>  
+</div>  
+
+@section Scripts {  
+    <script>  
+        function exportarPDF() {  
+            // Create a form to submit for PDF download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'PelisGanancia';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'PDF';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }  
+
+        function exportarExcel() {  
+            // Create a form to submit for Excel download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'PelisGanancia';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'Excel';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }  
+
+        function exportarCSV() {  
+            // Create a form to submit for CSV download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'PelisGanancia';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'CSV';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }  
+    </script>  
+}

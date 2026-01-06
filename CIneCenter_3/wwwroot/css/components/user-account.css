@@ -1,0 +1,31 @@
+/* Styles for the user account indicator */
+.user-account {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.user-greeting {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    display: none;
+}
+
+.user-avatar {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--text-color);
+    font-size: 1.5rem;
+}
+
+.dropdown-icon {
+    font-size: 0.7rem;
+}
+
+@media (min-width: 768px) {
+    .user-greeting {
+        display: block;
+    }
+}

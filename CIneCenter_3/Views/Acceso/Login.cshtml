@@ -1,0 +1,98 @@
+@model ASP_MVC_Prueba.Entidad.LoginUser
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - CineCenter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/auth.css">
+    <link rel="icon" type="image/png" href="~/assets/images/favicon.png">
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-box glow-border">
+            <div class="auth-header">
+                @if (!string.IsNullOrEmpty(ViewBag.LogoPath))
+                {
+                    <img src="@ViewBag.LogoPath" alt="CineCenter Logo" class="auth-logo">
+                }
+                else
+                {
+                    <img src="~/assets/images/logo.png" alt="CineCenter Logo" class="auth-logo">
+                }
+                <h1 class="auth-title">Iniciar Sesión</h1>
+                <p class="auth-subtitle">Accede a tu cuenta para comprar boletos</p>
+            </div>
+
+            <form asp-controller="Acceso" asp-action="Login" method="post">
+                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
+                
+                @if (TempData["PeliculaId"] != null)
+                {
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> Necesitas iniciar sesión para continuar con la selección de asientos.
+                    </div>
+                }
+
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="Email" class="form-label">Correo Electrónico</label>
+                    <input asp-for="Email" class="form-control" placeholder="ejemplo@email.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="PasswordHash" class="form-label">Contraseña</label>
+                    <input asp-for="PasswordHash" class="form-control" type="password" placeholder="••••••••" />
+                    <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                    </button>
+                </div>
+            </form>
+            
+            <div class="link-register">
+                <p>¿No tienes una cuenta? <a href="@Url.Action("Registro", "Acceso")">Regístrate ahora</a></p>
+            </div>
+            
+            <div style="margin-top: 1.5rem; text-align: center;">
+                <a href="@Url.Action("Index", "Home")" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Volver a la página principal
+                </a>
+                
+                @if (TempData["PeliculaId"] != null)
+                {
+                    <a href="@Url.Action("Detalles", "Home", new { id = TempData["PeliculaId"] })" class="btn-back" style="margin-top: 0.5rem;">
+                        <i class="fas fa-film"></i> Volver a detalles de la película
+                    </a>
+                }
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.5/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/4.0.0/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+        // Mostrar mensajes de error agregados manualmente desde el controlador
+        document.addEventListener('DOMContentLoaded', function() {
+            const validationSummary = document.querySelector('.validation-summary-errors');
+            if (validationSummary && validationSummary.textContent.trim() !== '') {
+                validationSummary.classList.add('alert', 'alert-danger');
+            }
+        });
+    </script>
+</body>
+</html>

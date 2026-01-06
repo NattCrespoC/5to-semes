@@ -1,0 +1,146 @@
+/* Social Media Buttons Component Styles */
+
+/* Container */
+.social-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Button Base Styles */
+.social-btn {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* Shape Variations */
+.social-buttons.circle .social-btn {
+    border-radius: 50%;
+}
+
+.social-buttons.rounded .social-btn {
+    border-radius: 8px;
+}
+
+.social-buttons.square .social-btn {
+    border-radius: 0;
+}
+
+/* Size Variations */
+.social-buttons.small .social-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9rem;
+}
+
+.social-buttons.medium .social-btn {
+    width: 40px;
+    height: 40px;
+    font-size: 1.1rem;
+}
+
+.social-buttons.large .social-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 1.4rem;
+}
+
+/* Hover Effects */
+.social-btn:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.social-btn:active {
+    transform: scale(0.95);
+}
+
+/* Label styles */
+.social-btn-label {
+    margin-left: 8px;
+}
+
+/* When labels are shown, we need different dimensions */
+.social-buttons .social-btn:has(.social-btn-label) {
+    width: auto;
+    padding: 8px 16px;
+}
+
+/* Social Media Brand Colors */
+.social-btn.facebook {
+    background-color: #3b5998;
+}
+
+.social-btn.twitter {
+    background-color: #1da1f2;
+}
+
+.social-btn.whatsapp {
+    background-color: #25d366;
+}
+
+.social-btn.instagram {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.social-btn.youtube {
+    background-color: #ff0000;
+}
+
+.social-btn.tiktok {
+    background-color: #000000;
+}
+
+.social-btn.email {
+    background-color: #555;
+}
+
+.social-btn.print {
+    background-color: #555;
+}
+
+.social-btn.copy {
+    background-color: #555;
+}
+
+/* Hover color variations */
+.social-btn.facebook:hover {
+    background-color: #2d4373;
+}
+
+.social-btn.twitter:hover {
+    background-color: #0c85d0;
+}
+
+.social-btn.whatsapp:hover {
+    background-color: #1da851;
+}
+
+.social-btn.youtube:hover {
+    background-color: #cc0000;
+}
+
+.social-btn.tiktok:hover {
+    background-color: #333;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .social-buttons {
+        gap: 8px;
+    }
+    
+    .social-buttons.medium .social-btn {
+        width: 36px;
+        height: 36px;
+    }
+}

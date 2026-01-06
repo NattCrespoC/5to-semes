@@ -1,0 +1,397 @@
+@using System.Security.Claims
+@model ASP_MVC_Prueba.Models.Horarios
+
+@{
+    ViewData["Title"] = "Selección de Asientos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    bool needsLogin = ViewData["ShowLoginModal"] != null && (bool)ViewData["ShowLoginModal"];
+    
+    // Definición de filas y columnas para el mapa de asientos
+    int rows = 13; // A-M
+    int seatsPerRow = 28;
+    char[] rowLetters = Enumerable.Range(0, rows).Select(i => (char)('A' + i)).ToArray();
+    
+    // Obtener asientos ocupados para este horario desde el modelo
+    var asientosOcupados = Model.Tickets?
+        .Where(t => t.HorarioId == Model.Id_Horarios)
+        .Select(t => t.Butaca.Numero)
+        .ToList() ?? new List<string>();
+    
+    // Crear un diccionario para mapear códigos de asientos a IDs de butacas
+    var butacasMap = new Dictionary<string, int>();
+    
+    // Obtener todas las butacas de la sala
+    var butacasDeSala = Model.Sala?.Butacas?.ToDictionary(b => b.Numero, b => b.Id_Butacas) ?? new Dictionary<string, int>();
+    
+    // Mostrar información de depuración en desarrollo
+    if (System.Diagnostics.Debugger.IsAttached)
+    {
+        <div class="alert alert-info">
+            <p>Asientos ocupados: @string.Join(", ", asientosOcupados)</p>
+            <p>Total butacas en sala: @(butacasDeSala.Count)</p>
+        </div>
+    }
+    
+    // Definir los asientos para personas con discapacidad (en la fila A)
+    var asientosDiscapacidad = new List<string> { "A4", "A10", "A18", "A24" };
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/seat-selection.css" asp-append-version="true"/>
+    <link rel="stylesheet" href="~/css/payment-modal.css" asp-append-version="true"/>
+}
+
+<div class="container">
+    <a href="@Url.Action("Detalles", "Home", new { id = Model.PeliculaId })" class="back-button">
+        <i class="fas fa-arrow-left"></i> Volver a la película
+    </a>
+
+    <div class="theater-container">
+        <div class="screen">Pantalla</div>
+        <div class="column-numbers" id="column-numbers">
+            <div class="column-number"></div>
+            @for (int i = seatsPerRow; i >= 1; i--)
+            {
+                <div class="column-number">@i</div>
+            }
+        </div>
+        <div class="seats-container">
+            <div class="row-labels">
+                @foreach (char rowLetter in rowLetters)
+                {
+                    <div class="row-label">@rowLetter</div>
+                }
+            </div>
+            <div class="seats-grid" id="seats-grid">
+                @foreach (char rowLetter in rowLetters)
+                {
+                    <div class="seat-row" data-row="@rowLetter">
+                        @for (int i = seatsPerRow; i >= 1; i--)
+                        {
+                            bool seatExists = true;
+                            string seatId = $"{rowLetter}{i}";
+                            
+                            // Lógica para determinar si un asiento existe en esta posición
+                            if (new[] {24, 23, 22, 8, 7}.Contains(i))
+                            {
+                                seatExists = rowLetter == 'M';
+                            }
+                            if (new[] {1, 2}.Contains(i))
+                            {
+                                seatExists = rowLetter > 'H';
+                            }
+                            
+                            // Verificar si este asiento forma parte de un espacio para discapacidad
+                            bool isSpecialSpace = asientosDiscapacidad.Contains(seatId);
+                            
+                            // Verificar si este asiento está ocupado
+                            bool isOccupied = asientosOcupados.Contains(seatId);
+                            
+                            if (seatExists)
+                            {
+                                // Obtener el ID único de la butaca de la base de datos
+                                int butacaId = 0;
+                                
+                                if (butacasDeSala.TryGetValue(seatId, out int id))
+                                {
+                                    butacaId = id;
+                                    butacasMap[seatId] = butacaId;
+                                }
+                                string seatClass = "seat";
+                                string buttonTitle = $"Asiento {seatId}";
+                                
+                                if (isSpecialSpace) {
+                                    seatClass += " special";
+                                    buttonTitle = "Espacio para persona en silla de ruedas";
+                                }
+                                
+                                if (isOccupied) {
+                                    seatClass += " occupied";
+                                    buttonTitle += " - Ocupado";
+                                }
+                                
+                                <button type="button" 
+                                        class="@seatClass" 
+                                        data-seat="@seatId" 
+                                        data-butaca-id="@butacaId"
+                                        @(isSpecialSpace ? "data-special=\"true\"" : "")
+                                        @(isOccupied ? "disabled" : "")
+                                        title="@buttonTitle">@i</button>
+                            }
+                            else
+                            {
+                                <div class="no-seat"></div>
+                            }
+                        }
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: var(--text-color);"></div>
+                <span>Disponible</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: var(--accent-color);"></div>
+                <span>Seleccionado</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: var(--gradient-start);"></div>
+                <span>Espacio para silla de ruedas</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background-color: var(--primary-color);"></div>
+                <span>Ocupado</span>
+            </div>
+            @* <div class="legend-item">
+                <div class="legend-color" style="background-color: rgba(0, 0, 0, 0.5);"></div>
+                <span>No Disponible</span>
+            </div> *@
+        </div>
+        
+        <div class="city-title">Ciudad: Cochabamba</div>
+    </div>
+
+    <div class="purchase-summary">
+        <h2 class="summary-title">Resumen de Compra</h2>
+        <div class="summary-item">
+            <strong>Película:</strong> <span id="movie-name">@Model.Pelicula.Titulo</span>
+        </div>
+        <div class="summary-item">
+            <strong>Formato:</strong> <span id="movie-format">@Model.Sala.Tipo</span>
+        </div>
+        <div class="summary-item">
+            <strong>Fecha de función:</strong> <span id="purchase-date">@Model.FechaHora.ToString("dddd, d 'de' MMMM", new System.Globalization.CultureInfo("es-ES"))</span>
+        </div>
+        <div class="summary-item">
+            <strong>Horario:</strong> <span id="movie-time">@Model.FechaHora.ToString("HH:mm")</span>
+        </div>
+        <div class="summary-item">
+            <strong>Sala:</strong> <span>@Model.Sala.Nombre</span>
+        </div>
+        <div class="summary-item">
+            <strong>Precio por asiento:</strong> Bs. <span id="seat-price">@Model.Precio.ToString("0.00")</span>
+        </div>
+        <div class="summary-item">
+            <strong>Asientos seleccionados:</strong> <span id="selected-seats">ninguno</span>
+        </div>
+        <div class="summary-item">
+            <strong>Cantidad de entradas:</strong> <span id="ticket-count">0</span>
+        </div>
+        <div class="summary-total">Total Bs. <span id="total-price">0.00</span></div>
+    </div>
+
+    <button class="buy-button" id="buy-button" disabled>
+        <i class="fas fa-ticket-alt"></i> Pagar entradas
+    </button>
+
+    <!-- Payment Modal -->
+    <div id="payment-modal" class="payment-modal">
+        <div class="payment-modal-content">
+            <div class="payment-header">
+                <h2>Proceso de Pago</h2>
+                <span class="close-payment-modal">&times;</span>
+            </div>
+            
+            <div class="payment-progress">
+                <div class="step-indicators">
+                    <div class="step-indicator current">
+                        <div class="step-number">1</div>
+                        <div class="step-label">Método</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-number">2</div>
+                        <div class="step-label">Datos</div>
+                    </div>
+                    <div class="step-indicator">
+                        <div class="step-number">3</div>
+                        <div class="step-label">Confirmación</div>
+                    </div>
+                </div>
+                <div class="payment-progress-bar">
+                    <div></div>
+                </div>
+            </div>
+            
+            <div class="payment-timer-container">
+                <div class="payment-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="payment-timer">10:00</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Choose Payment Method -->
+            <div id="payment-step-1" class="payment-step">
+                <h3>Selecciona un método de pago</h3>
+                
+                <div class="payment-methods">
+                    <div class="payment-method-option" data-method="qr">
+                        <div class="payment-method-icon">
+                            <i class="fas fa-qrcode"></i>
+                        </div>
+                        <div class="payment-method-info">
+                            <h4>Pago con QR</h4>
+                            <p>Escanea el código con tu app de pagos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="payment-method-option" data-method="card">
+                        <div class="payment-method-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <div class="payment-method-info">
+                            <h4>Tarjeta de Crédito/Débito</h4>
+                            <p>Realiza un pago seguro con tu tarjeta</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-summary">
+                    <div class="payment-info">
+                        <p><strong>Total a pagar:</strong> Bs. <span class="modal-total-amount">0.00</span></p>
+                    </div>
+                </div>
+                
+                <input type="hidden" id="selected-payment-method" value="">
+                
+                <div class="payment-navigation">
+                    <button class="secondary-button close-payment-modal">Cancelar</button>
+                    <button class="payment-step-button" data-action="next" disabled>Continuar</button>
+                </div>
+            </div>
+
+            <!-- Step 2: Payment Details -->
+            <div id="payment-step-2" class="payment-step">
+                <div class="payment-details-container">
+                    <!-- QR Code Payment Container -->
+                    <div id="qr-payment-container" class="payment-details-section">
+                        <h3>Pago mediante código QR</h3>
+                        
+                        <div class="qr-instructions">
+                            <p>1. Escanea este código QR con tu aplicación bancaria o billetera móvil</p>
+                            <p>2. Confirma el monto: Bs. <span class="modal-total-amount">0.00</span></p>
+                            <p>3. Autoriza el pago en tu dispositivo</p>
+                        </div>
+                        
+                        <div id="qr-code" class="qr-container"></div>
+                        
+                        <div class="payment-reference-container">
+                            <p><strong>Referencia de pago:</strong> <span id="payment-reference">--</span></p>
+                        </div>
+                    </div>
+
+                    <!-- Card Payment Container -->
+                    <div id="card-payment-container" class="payment-details-section">
+                        <h3>Pago con tarjeta</h3>
+                        
+                        <form id="card-payment-form" class="card-form">
+                            <div class="card-visualization">
+                                <div class="card-front">
+                                    <div class="card-chip"></div>
+                                    <div class="card-number">•••• •••• •••• ••••</div>
+                                    <div class="card-info">
+                                        <div class="card-holder">NOMBRE DEL TITULAR</div>
+                                        <div class="card-expiry">MM/AA</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="card-number">Número de Tarjeta</label>
+                                <div class="input-with-icon">
+                                    <input type="text" id="card-number" placeholder="1234 5678 9012 3456" required>
+                                    <div class="card-type-icon">
+                                        <i class="fab fa-cc-visa"></i>
+                                        <i class="fab fa-cc-mastercard"></i>
+                                        <i class="fab fa-cc-amex"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="card-holder">Nombre del Titular</label>
+                                <input type="text" id="card-holder" placeholder="Tal Como Aparece En Tu Tarjeta" required>
+                            </div>
+                            
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="card-expiry">Fecha de Expiración</label>
+                                    <input type="text" id="card-expiry" placeholder="MM/AA" required>
+                                </div>
+                                <div class="form-group half">
+                                    <label for="card-cvv">CVV</label>
+                                    <input type="text" id="card-cvv" placeholder="123" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-group">
+                                <div class="payment-security">
+                                    <i class="fas fa-lock"></i> Tu pago está protegido con encriptación de 256 bits.
+                                </div>
+                            </div>
+                        </form>
+                        
+                        <div id="card-payment-spinner" class="payment-spinner">
+                            <div class="spinner"></div>
+                            <p>Procesando pago...</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-navigation">
+                    <button class="secondary-button payment-step-button" data-action="prev">Atrás</button>
+                    <button class="payment-step-button" data-action="finish">Pagar ahora</button>
+                </div>
+            </div>
+
+            <!-- Step 3: Confirmation -->
+            <div id="payment-step-3" class="payment-step">
+                <div class="payment-confirmation">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    
+                    <h3>¡Pago Exitoso!</h3>
+                    
+                    <p>Gracias por tu compra. Tus entradas han sido reservadas exitosamente.</p>
+                    
+                    <div class="ticket-info">
+                        <p><strong>Referencia:</strong> <span id="confirmation-reference"></span></p>
+                        <p><strong>Asientos:</strong> <span id="confirmation-seats"></span></p>
+                    </div>
+                    
+                    <div class="receipt-options">
+                        <h4>Recibe tu comprobante por:</h4>
+                        <div class="receipt-buttons">
+                            <button class="receipt-button"><i class="fas fa-envelope"></i> Email</button>
+                            <button class="receipt-button"><i class="fas fa-mobile-alt"></i> SMS</button>
+                            <button class="receipt-button"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-navigation">
+                    <button class="payment-step-button" data-action="finish">Ver mis entradas</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Campo oculto para el ID del usuario - MODIFICADO para asegurar que siempre exista -->
+    <input type="hidden" id="user-id" value="@(User.Identity.IsAuthenticated ? User.FindFirstValue(ClaimTypes.NameIdentifier) : "0")" />
+    <input type="hidden" id="is-authenticated" value="@User.Identity.IsAuthenticated.ToString().ToLower()" />
+    
+    <!-- Campo oculto para el ID del horario -->
+    <input type="hidden" id="horario-id" value="@Model.Id_Horarios" />
+
+    <!-- Token antifalsificación para solicitudes AJAX -->
+    @Html.AntiForgeryToken()
+</div>
+
+@section Scripts {
+    <script src="~/js/payment-modal.js" asp-append-version="true"></script>
+    <script src="~/js/seat-selection-asp.js" asp-append-version="true"></script>
+}

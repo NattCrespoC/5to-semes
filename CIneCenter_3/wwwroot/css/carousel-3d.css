@@ -1,0 +1,341 @@
+/* Estilos para el Carrusel Avanzado de Atracciones */
+.attractions-section {
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, var(--background-color) 0%, #000 100%);
+    border-top: 1px solid var(--primary-color);
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.attractions-title {
+    text-align: center;
+    color: var(--accent-color);
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px var(--accent-color), 0 0 20px var(--accent-color);
+    position: relative;
+}
+
+.attractions-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: var(--accent-color);
+    margin: 15px auto;
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+/* Nuevo Carrusel Especial */
+.special-carousel {
+    max-width: 900px;
+    margin: 0 auto 40px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
+    border: 2px solid var(--primary-color);
+}
+
+.special-carousel-inner {
+    display: flex;
+    transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    height: 400px;
+    position: relative;
+    z-index: 1;
+}
+
+.special-slide {
+    min-width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.special-slide-image {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.special-slide-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1.2s ease;
+    filter: brightness(0.8);
+}
+
+.special-slide.active .special-slide-image img {
+    transform: scale(1.05);
+}
+
+.special-slide-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    color: #fff;
+    transform: translateY(0);
+    transition: transform 0.5s ease;
+    text-align: center;
+}
+
+.special-slide h3 {
+    color: var(--accent-color);
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.2s;
+}
+
+.special-slide p {
+    font-size: 16px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease 0.3s;
+}
+
+.special-slide.active h3,
+.special-slide.active p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.special-carousel-controls {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 0;
+    background: rgba(26, 0, 51, 0.8);
+    z-index: 5;
+}
+
+.special-nav-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 0 15px rgba(153, 51, 204, 0.5);
+    transition: all 0.3s;
+    z-index: 10;
+}
+
+.special-nav-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px var(--accent-color);
+}
+
+.special-indicators {
+    display: flex;
+    gap: 12px;
+}
+
+.special-indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.special-indicator.active {
+    background-color: var(--accent-color);
+    box-shadow: 0 0 10px var(--accent-color);
+}
+
+.special-indicator:hover {
+    transform: scale(1.2);
+}
+
+/* Detalles de las atracciones */
+.attraction-details-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 30px;
+    background: rgba(30, 41, 82, 0.8);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    border: 2px solid var(--primary-color);
+    position: relative;
+    z-index: 2;
+}
+
+.attraction-details {
+    display: none;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.attraction-details.active {
+    display: block;
+}
+
+.attraction-details h3 {
+    color: var(--accent-color);
+    font-size: 28px;
+    margin-bottom: 20px;
+    text-align: center;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    text-shadow: 0 0 5px rgba(0,0,0,0.8);
+}
+
+.attraction-details p {
+    color: var(--text-color);
+    line-height: 1.8;
+    margin-bottom: 25px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.attraction-features {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.feature-tag {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: white;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+}
+
+.feature-tag:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.4);
+}
+
+.feature-tag i {
+    font-size: 14px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Efectos especiales y animaciones */
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background-color: var(--accent-color);
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px var(--accent-color);
+    opacity: 0;
+    animation: particle-animation 6s linear infinite;
+}
+
+@keyframes particle-animation {
+    0% {
+        transform: translateY(100vh) translateX(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-100vh) translateX(100px);
+        opacity: 0;
+    }
+}
+
+/* Highlight para los slides activos */
+.special-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border: 4px solid transparent;
+    border-radius: 8px;
+    transition: all 0.5s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.special-slide.active::before {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 15px var(--accent-color);
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+    .special-carousel,
+    .attraction-details-container {
+        max-width: 90%;
+    }
+    
+    .special-carousel-inner {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .special-carousel-inner {
+        height: 300px;
+    }
+    
+    .attraction-details h3 {
+        font-size: 24px;
+    }
+    
+    .feature-tag {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .special-carousel-inner {
+        height: 250px;
+    }
+    
+    .special-slide h3 {
+        font-size: 22px;
+    }
+    
+    .special-slide p {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,404 @@
+/* cinecenter-custom.css */
+:root {
+    --cc-primary: #9933cc; /* Púrpura del logo CineCenter */
+    --cc-secondary: #0066cc; /* Azul complementario */
+    --cc-accent: #ffcc00; /* Amarillo del logo "center" */
+    --cc-dark: #1a0033; /* Fondo oscuro con tono púrpura */
+    --cc-light: #f5f5f1; /* Texto claro */
+    --cc-gradient-start: #9933cc;
+    --cc-gradient-end: #0066cc;
+    --cc-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    --cc-glow: 0 0 15px rgba(153, 51, 204, 0.5);
+}
+
+/* Estilo general de página */
+body {
+    background-color: var(--cc-dark);
+    color: var(--cc-light);
+    font-family: 'Roboto', sans-serif;
+    margin-bottom: 0;
+    overflow-x: hidden;
+}
+
+.container {
+    padding-top: 30px;
+    padding-bottom: 60px;
+}
+
+/* Mejora para alertas */
+.alert {
+    border: none;
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin: 20px auto;
+    max-width: 900px;
+    box-shadow: var(--cc-shadow);
+    animation: alertFadeIn 0.5s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.alert::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+}
+
+.alert-danger {
+    background-color: rgba(231, 76, 60, 0.15);
+    color: #e74c3c;
+}
+
+.alert-danger::before {
+    background-color: #e74c3c;
+}
+
+.alert-success {
+    background-color: rgba(46, 204, 113, 0.15);
+    color: #2ecc71;
+}
+
+.alert-success::before {
+    background-color: #2ecc71;
+}
+
+.alert strong {
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.alert .btn-close {
+    color: inherit;
+    opacity: 0.7;
+    font-size: 1.2rem;
+}
+
+.alert .btn-close:hover {
+    opacity: 1;
+}
+
+@keyframes alertFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Perfil de usuario */
+.profile-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.profile-card {
+    background: linear-gradient(145deg, rgba(15, 1, 30, 0.8), rgba(30, 5, 50, 0.9));
+    border-radius: 16px;
+    overflow: hidden;
+    border: none;
+    box-shadow: var(--cc-shadow);
+    position: relative;
+    margin-top: 80px;
+}
+
+.profile-header {
+    background: linear-gradient(135deg, var(--cc-gradient-start), var(--cc-gradient-end));
+    color: white;
+    padding: 20px 30px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 150px;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1));
+    transform: skewX(-15deg);
+}
+
+.profile-header h2 {
+    margin: 0;
+    font-weight: 700;
+    font-size: 28px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.profile-body {
+    padding: 30px;
+    position: relative;
+}
+
+.profile-avatar {
+    position: absolute;
+    top: -60px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: linear-gradient(to bottom right, var(--cc-primary), var(--cc-secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    border: 4px solid rgba(255, 255, 255, 0.1);
+}
+
+.profile-avatar i {
+    font-size: 60px;
+    color: white;
+}
+
+.profile-content {
+    margin-left: 140px;
+    min-height: 80px;
+}
+
+.profile-info-section {
+    margin-top: 20px;
+}
+
+.profile-info-item {
+    position: relative;
+    margin-bottom: 20px;
+    padding: 15px 20px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.profile-info-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+}
+
+.profile-info-item i {
+    margin-right: 15px;
+    color: var(--cc-accent);
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.profile-info-label {
+    font-weight: 600;
+    color: #bbb;
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.profile-info-value {
+    font-size: 1.1rem;
+    color: white;
+}
+
+.profile-footer {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 20px 30px;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cc-btn {
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.cc-btn i {
+    margin-right: 8px;
+}
+
+.cc-btn-primary {
+    background: linear-gradient(to right, var(--cc-gradient-start), var(--cc-gradient-end));
+    color: white;
+    box-shadow: 0 4px 10px rgba(153, 51, 204, 0.3);
+}
+
+.cc-btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(153, 51, 204, 0.5);
+    color: white;
+}
+
+.cc-btn-secondary {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.cc-btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
+    color: white;
+}
+
+/* Tipo de usuario badge */
+.user-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.user-badge i {
+    margin-right: 6px;
+}
+
+.user-badge-admin {
+    background: linear-gradient(to right, #e91e63, #fc466b);
+    color: white;
+}
+
+.user-badge-regular {
+    background: linear-gradient(to right, #0066cc, #5433ff);
+    color: white;
+}
+
+/* Animación de entrada */
+.fade-in-up {
+    animation: fadeInUp 0.5s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Sobreescribir estilos de bootstrap */
+.btn, .card, .form-control {
+    border-radius: 8px;
+}
+
+.card {
+    background-color: transparent;
+    border: none;
+}
+
+/* Correcciones para responsive */
+@media (max-width: 767px) {
+    .profile-avatar {
+        position: relative;
+        top: -50px;
+        left: 50%;
+        transform: translateX(-50%);
+        margin-bottom: -40px;
+    }
+    
+    .profile-content {
+        margin-left: 0;
+        text-align: center;
+        margin-top: 20px;
+    }
+    
+    .profile-info-item {
+        text-align: left;
+    }
+}
+
+/* Estilos para modales */
+.modal-content {
+    background: linear-gradient(145deg, rgba(15, 1, 30, 0.95), rgba(30, 5, 50, 0.98));
+    border: 1px solid var(--cc-primary);
+    border-radius: 16px;
+    box-shadow: var(--cc-shadow), var(--cc-glow);
+}
+
+.modal-header {
+    border-bottom-color: rgba(153, 51, 204, 0.3);
+    padding: 20px 25px;
+}
+
+.modal-footer {
+    border-top-color: rgba(153, 51, 204, 0.3);
+    padding: 20px 25px;
+}
+
+.form-control {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(153, 51, 204, 0.3);
+    color: white;
+    transition: all 0.3s;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--cc-primary);
+    box-shadow: 0 0 0 0.2rem rgba(153, 51, 204, 0.25);
+    color: white;
+}
+
+.form-label {
+    color: #ccc;
+    font-weight: 500;
+}
+
+/* Estilo para el mensaje de error cuando no está autenticado */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+    padding: 20px;
+}
+
+.error-icon {
+    font-size: 80px;
+    color: var(--cc-accent);
+    margin-bottom: 30px;
+}
+
+.error-title {
+    font-size: 28px;
+    color: white;
+    margin-bottom: 15px;
+    font-weight: 700;
+}
+
+.error-message {
+    font-size: 18px;
+    color: #bbb;
+    max-width: 600px;
+    margin-bottom: 30px;
+}

@@ -1,0 +1,96 @@
+@model Tuple<IEnumerable<ASP_MVC_Prueba.Models.Horarios>, List<DateTime>, List<TimeSpan>, List<ASP_MVC_Prueba.Models.Salas>, string[], Func<DateTime, TimeSpan, int, IEnumerable<ASP_MVC_Prueba.Models.Horarios>>>
+
+<div class="accordion" id="salasAccordion@(Model.Item2[0].ToString("ddMM"))">
+    @foreach (var sala in Model.Item4)
+    {
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="heading@(sala.Id_Salas)@(Model.Item2[0].ToString("ddMM"))">
+                <button class="accordion-button @(sala.Id_Salas == 1 ? "" : "collapsed")" type="button" 
+                        data-bs-toggle="collapse" data-bs-target="#collapse@(sala.Id_Salas)@(Model.Item2[0].ToString("ddMM"))" 
+                        aria-expanded="@(sala.Id_Salas == 1 ? "true" : "false")" 
+                        aria-controls="collapse@(sala.Id_Salas)@(Model.Item2[0].ToString("ddMM"))">
+                    Sala @sala.Nombre
+                </button>
+            </h2>
+            <div id="collapse@(sala.Id_Salas)@(Model.Item2[0].ToString("ddMM"))" 
+                 class="accordion-collapse collapse @(sala.Id_Salas == 1 ? "show" : "")" 
+                 aria-labelledby="heading@(sala.Id_Salas)@(Model.Item2[0].ToString("ddMM"))" 
+                 data-bs-parent="#salasAccordion@(Model.Item2[0].ToString("ddMM"))">
+                <div class="accordion-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th class="text-center" style="min-width: 100px;">Horario</th>
+                                    @foreach (var day in Model.Item2)
+                                    {
+                                        <th class="text-center" style="min-width: 150px;">
+                                            @Model.Item5[Array.IndexOf(Model.Item2.ToArray(), day)]
+                                            <br>
+                                            <small>@day.ToString("dd/MM")</small>
+                                        </th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var timeSlot in Model.Item3)
+                                {
+                                    <tr>
+                                        <td class="text-center align-middle font-weight-bold">
+                                            @timeSlot.ToString(@"hh\:mm")
+                                        </td>
+                                        @foreach (var day in Model.Item2)
+                                        {
+                                            <td class="text-center p-2">
+                                                @{
+                                                    var horario = Model.Item6(day, timeSlot, sala.Id_Salas).FirstOrDefault();
+                                                    
+                                                    if (horario != null)
+                                                    {
+                                                        <div class="card bg-light mb-0">
+                                                            <div class="card-body p-2">
+                                                                <h6 class="card-title mb-1">@horario.Pelicula.Titulo</h6>
+                                                                <p class="card-text small mb-1">
+                                                                    <span class="badge bg-info">@horario.Pelicula.Duracion min</span>
+                                                                    <span class="badge bg-secondary">$@horario.Precio</span>
+                                                                </p>
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <a asp-action="Edit" asp-route-id="@horario.Id_Horarios" 
+                                                                       class="btn btn-warning btn-sm">
+                                                                        <i class="fas fa-edit"></i>
+                                                                    </a>
+                                                                    <a asp-action="Delete" asp-route-id="@horario.Id_Horarios" 
+                                                                       class="btn btn-danger btn-sm">
+                                                                        <i class="fas fa-trash"></i>
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    else
+                                                    {
+                                                        var fechaHora = new DateTime(
+                                                            day.Year, day.Month, day.Day, 
+                                                            timeSlot.Hours, timeSlot.Minutes, 0
+                                                        );
+                                                        
+                                                        <a asp-action="Create" 
+                                                           asp-route-salaId="@sala.Id_Salas" 
+                                                           asp-route-fechaHora="@fechaHora.ToString("yyyy-MM-ddTHH:mm:ss")" 
+                                                           class="btn btn-outline-primary btn-sm">
+                                                            <i class="fas fa-plus"></i> Agregar
+                                                        </a>
+                                                    }
+                                                }
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

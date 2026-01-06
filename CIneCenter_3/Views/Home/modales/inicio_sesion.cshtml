@@ -1,0 +1,27 @@
+﻿@using ASP_MVC_Prueba.Entidad
+@* Remove the model directive to avoid type conflicts *@
+
+<div id="login-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-modal">&times;</span>
+        <h2>Iniciar Sesión</h2>
+        <form asp-controller="Acceso" asp-action="Login" id="login-form">
+            <input type="hidden" id="returnUrl" name="returnUrl" value="" />
+            <div id="login-error" class="error-message" style="display: none; color: red; margin-bottom: 15px; padding: 10px; border-radius: 5px; background-color: rgba(255, 0, 0, 0.1);"></div>
+
+            <div class="form-group">
+                <label for="login-email">Email:</label>
+                <input class="form-control" type="email" id="login-email" name="Email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Contraseña:</label>
+                <input class="form-control" type="password" id="login-password" name="PasswordHash" required>
+            </div>
+            <div class="form-group remember-me">
+                <input type="checkbox" id="remember-me" name="remember-me">
+                <label for="remember-me">Recordarme</label>
+            </div>
+            <button type="submit" class="submit-btn">Iniciar Sesión</button>
+        </form>
+    </div>
+</div>

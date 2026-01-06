@@ -1,0 +1,321 @@
+﻿@model ASP_MVC_Prueba.Models.Peliculas
+
+@{
+    ViewData["Title"] = Model.Titulo;
+    // Add link to the existing CSS file
+    ViewData["Styles"] = "<link rel='stylesheet' href='/css/movie-detail.css' />";
+    
+    // Helper function to convert YouTube URL to embed format
+    string GetEmbedUrl(string url) {
+        if (string.IsNullOrEmpty(url)) return "";
+        
+        // Handle different YouTube URL formats
+        if (url.Contains("youtube.com/watch")) {
+            // Regular watch URL
+            var videoId = url.Split(new[] {"v="}, StringSplitOptions.None)[1];
+            if (videoId.Contains("&")) {
+                videoId = videoId.Split('&')[0];
+            }
+            return Model.Trailer;
+        } 
+        else if (url.Contains("youtu.be")) {
+            // Shortened URL
+            var videoId = url.Split('/').Last();
+            return $"https://www.youtube.com/embed/{videoId}";
+        } 
+        else if (url.Contains("youtube.com/embed")) {
+            // Already in embed format
+            return url;
+        }
+        
+        return url;
+    }
+    
+    // Format the trailer URL for embedding
+    var embedUrl = GetEmbedUrl(Model.Trailer);
+}
+
+<div class="movie-container2">
+    <div class="movie-header2">
+        <div class="movie-title-section2">
+            <h1 class="movie-title2">@Model.Titulo</h1>
+            @if (Model.Estreno == true)
+            {
+                <span class="premiere-badge2">Estreno</span>
+            }
+        </div>
+        <a href="/Home#cartelera" class="back-button2">
+            <i class="fas fa-arrow-left"></i> Volver a Cartelera
+        </a>
+    </div>
+
+    <div class="main-content2">
+        <div class="info-box2">
+            <!-- Trailer section first -->
+             @if (!string.IsNullOrEmpty(Model.Trailer))
+            {
+                <div class="trailer-section2">
+                    <h2>Trailer</h2>
+                    <div class="trailer-container">
+                        <iframe src="@embedUrl" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
+                                frameborder="0"
+                                referrerpolicy="strict-origin-when-cross-origin"></iframe>
+                    </div>
+                </div>
+            } 
+            
+            <!-- Synopsis moved below the trailer -->
+            <div class="synopsis2">
+                <h2>Sinopsis</h2>
+                <p>@Model.Sinopsis</p>
+            </div>
+
+            <div class="booking-section2">
+                <h2 class="booking-title2">Horarios Disponibles</h2>
+                
+                @if (Model.Horarios != null && Model.Horarios.Any())
+                {
+                    // Group schedules by format (Sala.Tipo)
+                    var schedulesByFormat = Model.Horarios
+                        .GroupBy(h => h.Sala.Tipo)
+                        .ToDictionary(g => g.Key, g => g.ToList());
+                    
+                    // Get unique dates from schedules
+                    var uniqueDates = Model.Horarios
+                        .Select(h => h.FechaHora.Date)
+                        .Distinct()
+                        .OrderBy(d => d)
+                        .ToList();
+                    
+                    <button id="show-booking-options" class="btn-comprar">
+                        <i class="fas fa-ticket-alt"></i> Comprar Entradas
+                    </button>
+                    
+                    <div id="booking-options-container" style="display: none;">
+                        <div class="booking-filters2">
+                            <div class="booking-options2">
+                                @foreach (var format in schedulesByFormat.Keys)
+                                {
+                                    <button class="format-btn2" data-format="@format.ToLower()">@format</button>
+                                }
+                            </div>
+                            
+                            <div class="day-options2">
+                                @foreach (var date in uniqueDates.Take(9))
+                                {
+                                    string dayName;
+                                    if (date.Date == DateTime.Today)
+                                        dayName = "Hoy";
+                                    else if (date.Date == DateTime.Today.AddDays(1))
+                                        dayName = "Mañana";
+                                    else
+                                        dayName = date.ToString("ddd d", new System.Globalization.CultureInfo("es-ES"));
+                                    
+                                    <button class="day-btn2" data-date="@date.ToString("yyyy-MM-dd")">@dayName</button>
+                                }
+                            </div>
+                        </div>
+                        
+                        <div class="schedules-container2">
+                            @foreach (var format in schedulesByFormat.Keys)
+                            {
+                                <div class="schedule-section2 format-section" id="schedule-@format.ToLower()" style="display: none;">
+                                    @foreach (var date in uniqueDates)
+                                    {
+                                        <div class="date-section2" data-date="@date.ToString("yyyy-MM-dd")" style="display: none;">
+                                            @{
+                                                var dateFormatted = date.ToString("dddd, d 'de' MMMM", new System.Globalization.CultureInfo("es-ES"));
+                                                var formatSchedules = schedulesByFormat[format].Where(h => h.FechaHora.Date == date.Date).ToList();
+                                                
+                                                // Group by time of day
+                                                var morningSchedules = formatSchedules.Where(h => h.FechaHora.Hour < 12).OrderBy(h => h.FechaHora);
+                                                var afternoonSchedules = formatSchedules.Where(h => h.FechaHora.Hour >= 12 && h.FechaHora.Hour < 18).OrderBy(h => h.FechaHora);
+                                                var nightSchedules = formatSchedules.Where(h => h.FechaHora.Hour >= 18).OrderBy(h => h.FechaHora);
+                                            }
+
+                                            <h3 class="date-heading2">@dateFormatted</h3>
+                                            
+                                            @if (morningSchedules.Any())
+                                            {
+                                                <div class="time-section2">
+                                                    <h4 class="time-heading2">Mañana</h4>
+                                                    <div class="time-list2">
+                                                        @foreach (var horario in morningSchedules)
+                                                        {
+                                                            <a href="@Url.Action("HorarioDetalle", "Home", new { id = horario.Id_Horarios })"
+                                                               class="time-btn2"
+                                                               data-horario-id="@horario.Id_Horarios"
+                                                               data-sala="@horario.Sala.Nombre"
+                                                               data-formato="@horario.Sala.Tipo">
+                                                                @horario.FechaHora.ToString("hh:mm tt")
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                            
+                                            @if (afternoonSchedules.Any())
+                                            {
+                                                <div class="time-section2">
+                                                    <h4 class="time-heading2">Tarde</h4>
+                                                    <div class="time-list2">
+                                                        @foreach (var horario in afternoonSchedules)
+                                                        {
+                                                            <a href="@Url.Action("HorarioDetalle", "Home", new { id = horario.Id_Horarios })"
+                                                               class="time-btn2"
+                                                               data-horario-id="@horario.Id_Horarios"
+                                                               data-sala="@horario.Sala.Nombre"
+                                                               data-formato="@horario.Sala.Tipo">
+                                                                @horario.FechaHora.ToString("hh:mm tt")
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                            
+                                            @if (nightSchedules.Any())
+                                            {
+                                                <div class="time-section2">
+                                                    <h4 class="time-heading2">Noche</h4>
+                                                    <div class="time-list2">
+                                                        @foreach (var horario in nightSchedules)
+                                                        {
+                                                            <a href="@Url.Action("HorarioDetalle", "Home", new { id = horario.Id_Horarios })"
+                                                               class="time-btn2"
+                                                               data-horario-id="@horario.Id_Horarios"
+                                                               data-sala="@horario.Sala.Nombre"
+                                                               data-formato="@horario.Sala.Tipo">
+                                                                @horario.FechaHora.ToString("hh:mm tt")
+                                                            </a>
+                                                        }
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
+                                </div>
+                            }
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="no-schedules">
+                        <p>No hay horarios disponibles para esta película en este momento.</p>
+                    </div>
+                }
+            </div>
+        </div>
+
+        <div class="movie-info2">
+            <img src="/img/peliculas/@Model.Imagen" alt="@Model.Titulo" class="movie-poster2" />
+            
+            <div class="info-box2">
+                <h3>Detalles</h3>
+                <p><strong>Duración:</strong> @Model.Duracion minutos</p>
+                <p><strong>Género:</strong> @Model.Genero</p>
+                
+                <h4>Formatos disponibles:</h4>
+                <div class="categories2">
+                    @foreach(var formato in Model.Formatos?.Split(',') ?? new string[0])
+                    {
+                        <span class="category-tag2">@formato.Trim()</span>
+                    }
+                </div>
+                
+                <div class="social-share2">
+                    <h3>Compartir</h3>
+                    <div class="social-share-buttons2">
+                        <button class="social-share-btn2 facebook"><i class="fab fa-facebook-f"></i></button>
+                        <button class="social-share-btn2 twitter"><i class="fab fa-twitter"></i></button>
+                        <button class="social-share-btn2 whatsapp"><i class="fab fa-whatsapp"></i></button>
+                        <button class="social-share-btn2 instagram"><i class="fab fa-instagram"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle booking options visibility
+            document.getElementById('show-booking-options').addEventListener('click', function() {
+                const optionsContainer = document.getElementById('booking-options-container');
+                optionsContainer.style.display = optionsContainer.style.display === 'none' ? 'block' : 'none';
+                
+                // When showing options, auto-select the first format and first day
+                if (optionsContainer.style.display === 'block') {
+                    const firstFormatBtn = document.querySelector('.format-btn2');
+                    const firstDayBtn = document.querySelector('.day-btn2');
+                    
+                    if (firstFormatBtn) firstFormatBtn.click();
+                    if (firstDayBtn) firstDayBtn.click();
+                }
+            });
+            
+            // Handle format button clicks
+            document.querySelectorAll('.format-btn2').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all format buttons
+                    document.querySelectorAll('.format-btn2').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Hide all format sections
+                    document.querySelectorAll('.format-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+                    
+                    // Show selected format section
+                    const formatSection = document.getElementById('schedule-' + this.dataset.format);
+                    if (formatSection) formatSection.style.display = 'block';
+                    
+                    // If a day is already selected, show corresponding date section
+                    const activeDay = document.querySelector('.day-btn2.active');
+                    if (activeDay) {
+                        const selectedDate = activeDay.dataset.date;
+                        showDateSection(selectedDate);
+                    }
+                });
+            });
+            
+            // Handle day button clicks
+            document.querySelectorAll('.day-btn2').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all day buttons
+                    document.querySelectorAll('.day-btn2').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    
+                    // Show date section
+                    showDateSection(this.dataset.date);
+                });
+            });
+            
+            // Function to show date sections for selected date
+            function showDateSection(date) {
+                // Hide all date sections
+                document.querySelectorAll('.date-section2').forEach(section => {
+                    section.style.display = 'none';
+                });
+                
+                // Show date sections for selected date in visible format section
+                const activeFormat = document.querySelector('.format-section[style*="block"]');
+                if (activeFormat) {
+                    const dateSection = activeFormat.querySelector(`.date-section2[data-date="${date}"]`);
+                    if (dateSection) dateSection.style.display = 'block';
+                }
+            }
+        });
+    </script>
+}

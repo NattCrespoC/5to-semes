@@ -1,0 +1,440 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cine Center</title>
+    @* <title>CinePrueba - Tu cine online</title> *@
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+        @RenderSection("Styles", required: false)
+    <link rel="stylesheet" href="~/css/normalize.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/components/layout.css">
+    <link rel="stylesheet" href="~/css/components/social-buttons.css">
+    <link rel="stylesheet" href="~/css/components/contact-social.css">
+    <link rel="stylesheet" href="~/css/carrusel.css">
+    <link rel="stylesheet" href="~/css/carousel-3d.css">
+    <link rel="stylesheet" href="~/css/main.css">
+    <link rel="stylesheet" href="~/css/movie-detail.css"/>
+    <link rel="stylesheet" href="~/css/components/cartelera.css" />
+    <link rel="stylesheet" href="~/css/cinecenter-custom.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/components/user-dropdown.css" asp-append-version="true">
+    <link rel="stylesheet" href="~/css/components/digital-clock.css" asp-append-version="true">
+    <script src="https://kit.fontawesome.com/79cf3b5d9a.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <!-- Reloj Digital -->
+        <div class="digital-clock-container">
+            <div class="digital-clock">
+                <div class="time" id="digital-clock-time">00:00:00</div>
+                <div class="date" id="digital-clock-date">Loading...</div>
+            </div>
+        </div>
+        <nav class="nav-container">
+            <div class="logo">
+                    <img src="~/img/cineCenter.png" alt="CinePrueba" id="cine-logo">
+                    <a href="@Url.Action("Index", "Home")"
+            </div>
+
+            <button class="menu-toggle" id="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <div class="menu-container">
+                <ul class="menu">
+                    <!-- Modificar solo la sección de menú en el navbar -->
+                    <ul class="menu">
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <li><a href="@Url.Action("AdminPelis", "Pelicula")">Panel de Administración</a></li>
+                        }
+                        else
+                        {
+                            <li><a href="@Url.Action("Index", "Home")#inicio">Inicio</a></li>
+                            <li><a href="@Url.Action("Index", "Home")#cartelera">Cartelera</a></li>
+                            <li><a href="@Url.Action("Index", "Home")#formatos">Formatos</a></li>
+                            <li><a href="#contacto">Contacto</a></li>
+                        }
+                        <!-- Botones de autenticación -->
+                        @if (!User.Identity.IsAuthenticated)
+                        {
+                            <li class="menu-auth-item">
+                                <button id="login-btn" class="auth-btn login-btn">
+                                    <i class="fas fa-user"></i> Iniciar Sesión
+                                </button>
+                            </li>
+                            <li class="menu-auth-item">
+                                <button id="register-btn" class="auth-btn register-btn">
+                                    <i class="fas fa-user-plus"></i> Registrarse
+                                </button>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="menu-auth-item user-dropdown" id="user-profile-dropdown">
+                                <button class="user-menu-btn" id="user-menu-button">
+                                    <i class="fas fa-user-circle"></i>
+                                    <span id="user-display-name">@User.Identity.Name</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="dropdown-content" id="user-dropdown-menu">
+                                    <div class="user-info">
+                                        <p id="user-full-name">@User.Identity.Name</p>
+                                        <p id="user-email" class="user-email">@User.Claims.FirstOrDefault(c => c.Type == System.Security.Claims.ClaimTypes.Email)?.Value</p>
+                                        <p><span id="user-type" class="user-type">@(User.IsInRole("Admin") ? "Administrador" : "Cliente")</span></p>
+                                    </div>
+                                    @if (!User.IsInRole("Admin"))
+                                    {
+                                        <a href="@Url.Action("Perfil", "Home")" id="perfil-link"><i class="fas fa-id-card"></i> Ver Perfil</a>
+                                    }
+                                    <a href="@Url.Action("Salir", "Acceso")" id="logout-link"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main -->
+    @RenderBody()
+
+    <!-- Modales de inicio de sesión y registro -->
+    @if (!User.Identity.IsAuthenticated)
+    {
+        @await Html.PartialAsync("modales/inicio_sesion")
+
+        <div id="register-modal" class="modal">
+            @await Html.PartialAsync("modales/registro")
+        </div>
+    }
+    
+    @await Html.PartialAsync("componentes/footer")
+    <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js" asp-append-version="true"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/services/index.js" asp-append-version="true"></script>
+    <script src="~/js/contact-animation.js" asp-append-version="true"></script>
+    <script src="~/js/main.js" asp-append-version="true"></script>
+    <script src="~/js/components/carousel-3d.js" asp-append-version="true"></script>
+    <script src="~/js/components/social-buttons.js" asp-append-version="true"></script>
+    <script src="~/js/components/cartelera.js" asp-append-version="true"></script>
+    <script src="~/js/components/digital-clock.js" asp-append-version="true"></script>
+    <script src="~/js/login.js" asp-append-version="true"></script>
+
+    <script>
+        // Script para manejar la navegación al perfil de usuario y dropdown del menú
+        document.addEventListener('DOMContentLoaded', function() {
+            // Código para el botón de menú hamburguesa
+            const menuToggle = document.getElementById('menu-toggle');
+            const menuContainer = document.querySelector('.menu-container');
+            
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    menuContainer.classList.toggle('menu-open');
+                    // Cambiar el icono según el estado del menú
+                    const icon = menuToggle.querySelector('i');
+                    if (menuContainer.classList.contains('menu-open')) {
+                        icon.classList.remove('fa-bars');
+                        icon.classList.add('fa-times');
+                    } else {
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            }
+            
+            // Toggle dropdown menu when clicking the user menu button
+            const userMenuButton = document.getElementById('user-menu-button');
+            if (userMenuButton) {
+                userMenuButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const dropdownMenu = document.getElementById('user-dropdown-menu');
+                    if (dropdownMenu) {
+                        dropdownMenu.classList.toggle('show');
+                    }
+                });
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('#user-profile-dropdown')) {
+                    const dropdownMenu = document.getElementById('user-dropdown-menu');
+                    if (dropdownMenu && dropdownMenu.classList.contains('show')) {
+                        dropdownMenu.classList.remove('show');
+                    }
+                }
+            });
+
+            // Login button handler
+            const loginBtn = document.getElementById('login-btn');
+            if (loginBtn) {
+                loginBtn.addEventListener('click', function() {
+                    const loginModal = document.getElementById('login-modal');
+                    if (loginModal) {
+                        const returnUrlInput = document.getElementById('returnUrl');
+                        if (returnUrlInput) {
+                            returnUrlInput.value = window.location.href;
+                        }
+                        loginModal.style.display = 'block';
+                    }
+                });
+            }
+            
+            // Register button handler
+            const registerBtn = document.getElementById('register-btn');
+            if (registerBtn) {
+                registerBtn.addEventListener('click', function() {
+                    const registerModal = document.getElementById('register-modal');
+                    if (registerModal) {
+                        registerModal.style.display = 'block';
+                    }
+                });
+            }
+            
+            // Close buttons for modals
+            const closeButtons = document.querySelectorAll('.close-modal');
+            closeButtons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const modal = btn.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Add logout confirmation
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutLink = document.getElementById('logout-link');
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function(e) {
+                    if (!confirm('¿Estás seguro que deseas cerrar sesión?')) {
+                        e.preventDefault();
+                    }
+                });
+            }
+            
+            // Display success message if present
+            const successMessage = '@TempData["SuccessMessage"]';
+            if (successMessage && successMessage !== '') {
+                // Create a toast notification
+                const toast = document.createElement('div');
+                toast.className = 'toast-notification';
+                toast.innerHTML = `
+                    <div class="toast-content">
+                        <i class="fas fa-check-circle toast-icon"></i>
+                        <div class="toast-message">${successMessage}</div>
+                    </div>
+                `;
+                document.body.appendChild(toast);
+                
+                // Show then hide the toast after a delay
+                setTimeout(() => {
+                    toast.classList.add('show');
+                    setTimeout(() => {
+                        toast.classList.remove('show');
+                        setTimeout(() => {
+                            document.body.removeChild(toast);
+                        }, 500);
+                    }, 3000);
+                }, 100);
+            }
+        });
+    </script>
+
+    <!-- Add CSS to ensure the dropdown is visible when active -->
+    <style>
+        .dropdown-content.show {
+            display: block !important;
+        }
+        
+        /* Estilos para el menú móvil - con selectores más específicos para evitar conflictos */
+        @@media screen and (max-width: 991px) {
+            header .nav-container {
+                position: relative;
+                padding: 10px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+            
+            header .logo img {
+                max-width: 120px;
+                height: auto;
+            }
+            
+            /* Estilo específico para el botón hamburguesa */
+            header .menu-toggle {
+                display: inline-block !important;
+                position: absolute;
+                top: 50%;
+                right: 15px;
+                transform: translateY(-50%);
+                z-index: 10000;
+                background-color: var(--primary-color, #9933cc);
+                color: white;
+                border: none;
+                border-radius: 4px;
+                padding: 8px 12px;
+                margin: 0;
+                cursor: pointer;
+                box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            }
+            
+            header .menu-toggle i {
+                font-size: 1.5rem;
+                color: white !important;
+            }
+            
+            /* Contenedor del menú desplegable */
+            header .menu-container {
+                display: none;
+                width: 100%;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                background-color: var(--background-color, #1a0033);
+                border-top: 1px solid rgba(255,255,255,0.1);
+                z-index: 9999;
+            }
+            
+            header .menu-container.menu-open {
+                display: block;
+            }
+            
+            /* Elementos del menú - hacerlos más delgados */
+            header .menu {
+                flex-direction: column;
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            
+            header .menu li {
+                width: 100%;
+                text-align: center;
+                padding: 5px 0; /* Reducido de 10px a 5px */
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            
+            header .menu li a, 
+            header .menu li button {
+                display: inline-block;
+                width: auto; /* Cambiado de 80% a auto para adaptarse al contenido */
+                padding: 6px 12px; /* Reducido de 10px 15px */
+                margin: 0 auto;
+                font-size: 0.9rem; /* Texto más pequeño */
+            }
+            
+            /* Ajustar botones de autenticación en móvil */
+            .menu-auth-item {
+                margin: 3px 0; /* Reducido de 5px a 3px */
+            }
+            
+            .auth-btn {
+                width: auto; /* Cambiado de 80% a auto */
+                min-width: 140px; /* Establecer un ancho mínimo en lugar de un porcentaje */
+                margin: 0 auto;
+                padding: 6px 12px; /* Reducido de 8px 15px */
+                font-size: 0.85rem; /* Texto más pequeño */
+            }
+            
+            /* Hacer el contenedor del menú más compacto */
+            header .menu-container {
+                padding: 5px 0; /* Reducido de 10px a 5px */
+            }
+            
+            /* Eliminar el anidamiento innecesario de listas */
+            header .menu .menu {
+                padding: 0;
+                margin: 0;
+            }
+            
+            /* Compactar los iconos */
+            header .menu li a i, 
+            header .menu li button i {
+                font-size: 0.9rem;
+                margin-right: 5px; /* Espacio más pequeño después del icono */
+            }
+        }
+        
+        /* En pantallas muy pequeñas */
+        @@media screen and (max-width: 576px) {
+            header .logo img {
+                max-width: 100px;
+            }
+            
+            .digital-clock {
+                font-size: 0.8rem;
+            }
+            
+            header .menu-toggle {
+                right: 10px;
+                padding: 6px 10px;
+            }
+        }
+        
+        /* Estilos para pantallas grandes */
+        @@media screen and (min-width: 992px) {
+            header .menu-toggle {
+                display: none !important;
+            }
+            
+            header .menu-container {
+                display: flex !important;
+                justify-content: flex-start;
+                margin-left: 20px;
+            }
+            
+            header .menu {
+                margin-right: auto;
+                padding-left: 0;
+            }
+            
+            .digital-clock-container {
+                margin-left: auto;
+                padding-right: 15px;
+            }
+        }
+        
+        .toast-notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-20px);
+            transition: all 0.5s;
+        }
+        
+        .toast-notification.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .toast-content {
+            display: flex;
+            align-items: center;
+        }
+        
+        .toast-icon {
+            margin-right: 10px;
+            font-size: 1.25rem;
+        }
+        
+        .toast-message {
+            font-size: 14px;
+        }
+    </style>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

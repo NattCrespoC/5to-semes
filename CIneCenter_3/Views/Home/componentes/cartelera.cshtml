@@ -1,0 +1,92 @@
+﻿<div class="cartelera-section" id="cartelera">
+    <h2 class="section-title">Nuestra Cartelera</h2>
+
+    <div class="classification-container">
+        <div class="category-filters">
+            <button class="category-btn active" data-category="all">Todos</button>
+            <button class="category-btn" data-category="estreno">Estrenos</button>
+            <button class="category-btn" data-category="terror">Terror</button>
+            <button class="category-btn" data-category="romance">Amor</button>
+            <button class="category-btn" data-category="ciencia-ficcion">Ciencia Ficción</button>
+            <button class="category-btn" data-category="animacion">Animación</button>
+        </div>
+    </div>
+
+    <div class="category-preview-container" id="preview-estreno">
+        <div class="category-preview-content">
+            <div class="category-preview-image">
+                <img src="/img/Categorias/Estrenos.png" alt="Estrenos">
+            </div>
+            <div class="category-preview-text">
+                <h3>Estrenos</h3>
+                <p>Sé el primero en disfrutar de las películas recién llegadas a nuestra cartelera. Los últimos lanzamientos de Hollywood y del cine internacional te esperan con la mejor calidad de imagen y sonido.</p>
+                <button class="view-movies-btn" data-category="estreno">Ver Estrenos</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-preview-container" id="preview-terror">
+        <div class="category-preview-content">
+            <div class="category-preview-image">
+                <img src="/img/Categorias/terror.png" alt="Terror">
+            </div>
+            <div class="category-preview-text">
+                <h3>Terror</h3>
+                <p>¿Te atreves a experimentar el miedo en su máxima expresión? Nuestras películas de terror te mantendrán al borde de tu asiento con historias escalofriantes y momentos de pura adrenalina.</p>
+                <button class="view-movies-btn" data-category="terror">Ver Películas de Terror</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-preview-container" id="preview-romance">
+        <div class="category-preview-content">
+            <div class="category-preview-image">
+                <img src="/img/Categorias/Amor.png" alt="Amor">
+            </div>
+            <div class="category-preview-text">
+                <h3>Amor</h3>
+                <p>Sumérgete en historias de amor que te harán reír, llorar y creer en los finales felices. Perfectas para ver en pareja o para disfrutar de una sesión sentimental en solitario.</p>
+                <button class="view-movies-btn" data-category="amor">Ver Películas Románticas</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-preview-container" id="preview-ciencia-ficcion">
+        <div class="category-preview-content">
+            <div class="category-preview-image">
+                <img src="/img/Categorias/cienci_ficcion.png" alt="Ciencia Ficción">
+            </div>
+            <div class="category-preview-text">
+                <h3>Ciencia Ficción</h3>
+                <p>Viaja al futuro, explora universos paralelos y descubre tecnologías inimaginables con nuestras películas de ciencia ficción. Una ventana a mundos que desafían los límites de la realidad.</p>
+                <button class="view-movies-btn" data-category="ciencia-ficcion">Ver Películas de Ciencia Ficción</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="category-preview-container" id="preview-animacion">
+        <div class="category-preview-content">
+            <div class="category-preview-image">
+                <img src="/img/Categorias/animacion.png" alt="Animación">
+            </div>
+            <div class="category-preview-text">
+                <h3>Animación</h3>
+                <p>Películas llenas de color, imaginación y personajes entrañables para toda la familia. La magia de la animación cobra vida en nuestra pantalla grande con historias para todas las edades.</p>
+                <button class="view-movies-btn" data-category="animacion">Ver Películas de Animación</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="movie-grid" id="all-movies-container">
+        <!-- Contenido dinámico con JS -->
+        <div class="loading-indicator">Cargando películas...</div>
+    </div>
+
+    <!-- Contenedor para la paginación -->
+    <div class="pagination-container" id="pagination-container">
+        <!-- Los botones de paginación se generarán dinámicamente -->
+    </div>
+</div>
+@* @section Scripts {
+    <script src="~/js/components/cartelera.js" asp-append-version="true"></script>
+} *@

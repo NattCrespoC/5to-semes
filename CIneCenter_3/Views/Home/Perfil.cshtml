@@ -1,0 +1,67 @@
+@model ASP_MVC_Prueba.Models.Usuarios
+
+<div class="container profile-container">
+    <div class="profile-card fade-in-up">
+        <div class="profile-header">
+            <h2><i class="fas fa-user-circle me-2"></i>Perfil de Usuario</h2>
+        </div>
+        <div class="profile-body">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="profile-content">
+                <h3>@Model.NombreCompleto</h3>
+                
+                @if (Model.EsAdmin.HasValue)
+                {
+                    <div class="user-badge @(Model.EsAdmin.Value ? "user-badge-admin" : "user-badge-regular")">
+                        <i class="fas @(Model.EsAdmin.Value ? "fa-user-shield" : "fa-user")"></i>
+                        <span>@(Model.EsAdmin.Value ? "Administrador" : "Usuario Regular")</span>
+                    </div>
+                }
+            </div>
+            
+            <div class="profile-info-section">
+                <div class="profile-info-item">
+                    <i class="fas fa-envelope"></i>
+                    <span class="profile-info-label">Correo Electrónico</span>
+                    <span class="profile-info-value">@Model.Email</span>
+                </div>
+                
+                @if (Model.EsAdmin.HasValue)
+                {
+                    <div class="profile-info-item">
+                        <i class="fas fa-user-shield"></i>
+                        <span class="profile-info-label">Tipo de Usuario</span>
+                        <span class="profile-info-value">@(Model.EsAdmin.Value ? "Administrador" : "Usuario Regular")</span>
+                    </div>
+                }
+                
+                @if (Model.FechaRegistro.HasValue)
+                {
+                    <div class="profile-info-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span class="profile-info-label">Fecha de Registro</span>
+                        <span class="profile-info-value">@Model.FechaRegistro.Value.ToString("dd/MM/yyyy")</span>
+                    </div>
+                }
+
+                <div class="profile-info-item">
+                    <a href="@Url.Action("MisTickets", "Home")" class="profile-info-link">
+                        <i class="fas fa-ticket-alt"></i>
+                        <span class="profile-info-label">Historial de Compras</span>
+                        <span class="profile-info-value">Ver mis Tickets recientes </span>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="profile-footer">
+            <a href="@Url.Action("Index", "Home")" class="cc-btn cc-btn-secondary">
+                <i class="fas fa-arrow-left"></i>Volver al Inicio
+            </a>
+            <a href="#" class="cc-btn cc-btn-primary">
+                <i class="fas fa-edit"></i>Editar Perfil
+            </a>
+        </div>
+    </div>
+</div>

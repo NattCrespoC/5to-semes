@@ -1,0 +1,124 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|c:\\users\\natal\\desktop\\nattytareas\\5tosemestre\\taller de programacion\\proyecto final bd,analisis,taller\\cinecenter_3\\views\\home\\horariodetalle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|solutionrelative:views\\home\\horariodetalle.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|c:\\users\\natal\\desktop\\nattytareas\\5tosemestre\\taller de programacion\\proyecto final bd,analisis,taller\\cinecenter_3\\views\\home\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|solutionrelative:views\\home\\detalles.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|c:\\users\\natal\\desktop\\nattytareas\\5tosemestre\\taller de programacion\\proyecto final bd,analisis,taller\\cinecenter_3\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|c:\\users\\natal\\desktop\\nattytareas\\5tosemestre\\taller de programacion\\proyecto final bd,analisis,taller\\cinecenter_3\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|c:\\users\\natal\\desktop\\nattytareas\\5tosemestre\\taller de programacion\\proyecto final bd,analisis,taller\\cinecenter_3\\controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|solutionrelative:controllers\\accesocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|c:\\users\\natal\\desktop\\nattytareas\\5tosemestre\\taller de programacion\\proyecto final bd,analisis,taller\\cinecenter_3\\views\\home\\mistickets.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{37D9F5F5-848F-4F02-9D84-266C4E4E7E7D}|ASP_MVC_Prueba.csproj|solutionrelative:views\\home\\mistickets.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{e5c86464-96be-4d7c-9a8b-abcb3bbf5f92}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "HorarioDetalle.cshtml",
+              "DocumentMoniker": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Views\\Home\\HorarioDetalle.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\HorarioDetalle.cshtml",
+              "ToolTip": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Views\\Home\\HorarioDetalle.cshtml",
+              "RelativeToolTip": "Views\\Home\\HorarioDetalle.cshtml",
+              "ViewState": "AQIAALEAAAAAAAAAAAAAAMEAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-10T22:26:58.146Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "AccesoController.cs",
+              "DocumentMoniker": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Controllers\\AccesoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AccesoController.cs",
+              "ToolTip": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Controllers\\AccesoController.cs",
+              "RelativeToolTip": "Controllers\\AccesoController.cs",
+              "ViewState": "AQIAAHIAAAAAAAAAAAAowIEAAAA2AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-10T19:35:34.31Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Detalles.cshtml",
+              "DocumentMoniker": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Views\\Home\\Detalles.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\Detalles.cshtml",
+              "ToolTip": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Views\\Home\\Detalles.cshtml",
+              "RelativeToolTip": "Views\\Home\\Detalles.cshtml",
+              "ViewState": "AQIAACsAAAAAAAAAAAAAADYAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-09T23:24:46.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "MisTickets.cshtml",
+              "DocumentMoniker": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Views\\Home\\MisTickets.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\MisTickets.cshtml",
+              "ToolTip": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Views\\Home\\MisTickets.cshtml",
+              "RelativeToolTip": "Views\\Home\\MisTickets.cshtml",
+              "ViewState": "AQIAAMMAAAAAAAAAAAAswMYAAAAdAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-09T20:41:42.471Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\appsettings.json",
+              "RelativeDocumentMoniker": "appsettings.json",
+              "ToolTip": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\appsettings.json",
+              "RelativeToolTip": "appsettings.json",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAQAAAAiAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-09T20:35:58.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\natal\\Desktop\\nattytareas\\5tosemestre\\Taller de Programacion\\Proyecto Final BD,Analisis,Taller\\CIneCenter_3\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAhwB4AAAADAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-09T20:33:30.917Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+/* Estilos para los filtros de día */
+.booking-filters, .booking-filters2 {
+    margin-bottom: 20px;
+}
+
+.day-options, .day-options2 {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.day-btn, .day-btn2 {
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    color: var(--text-color);
+    border: 1px solid var(--gradient-start);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.day-btn.selected, .day-btn.active,
+.day-btn2.selected, .day-btn2.active {
+    background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+    color: #000;
+    font-weight: bold;
+}
+
+.day-btn:hover, .day-btn2:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para las secciones de tiempo */
+.time-section, .time-section2 {
+    margin-bottom: 15px;
+}
+
+.time-heading, .time-heading2 {
+    color: #ccc;
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.date-heading, .date-heading2 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}

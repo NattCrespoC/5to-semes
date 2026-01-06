@@ -1,0 +1,131 @@
+@model IEnumerable<ASP_MVC_Prueba.Models.Tickets>
+
+@{
+    ViewData["Title"] = "Mis Tickets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+    var ticketsNuevos = ViewBag.TicketsNuevos as List<int> ?? new List<int>();
+}
+
+<div class="container pt-4">
+    <h1 class="text-center mb-4">Mis Tickets</h1>
+    
+    @if (!Model.Any())
+    {
+        <div class="alert alert-info text-center">
+            <h4>No tienes tickets comprados</h4>
+            <p>Explora nuestra cartelera y disfruta del mejor cine.</p>
+            <a href="@Url.Action("Index", "Home")" class="btn btn-primary">Ver Cartelera</a>
+        </div>
+    }
+    else
+    {
+        if (ticketsNuevos.Any())
+        {
+            <div class="alert alert-success">
+                <h4><i class="fas fa-check-circle"></i> ¡Compra realizada con éxito!</h4>
+                <p>Tus entradas han sido reservadas correctamente. Puedes imprimirlas o mostrarlas en tu teléfono al llegar al cine.</p>
+            </div>
+        }
+        
+        <div class="row">
+            @foreach (var ticket in Model)
+            {
+                bool isNew = ticketsNuevos.Contains(ticket.Id_Tickets);
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card ticket-card @(isNew ? "ticket-new" : "")">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Ticket #@ticket.Id_Tickets</h5>
+                            @if (isNew)
+                            {
+                                <span class="badge bg-success">Nuevo</span>
+                            }
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h4 class="card-title">@ticket.Horario.Pelicula.Titulo</h4>
+                                    <p class="card-text">
+                                        <strong>Función:</strong> @ticket.Horario.FechaHora.ToString("dddd, d 'de' MMMM 'de' yyyy", new System.Globalization.CultureInfo("es-ES")) - @ticket.Horario.FechaHora.ToString("HH:mm")<br />
+                                        <strong>Sala:</strong> @ticket.Horario.Sala.Nombre<br />
+                                        @*<strong>Asiento:</strong> @ticket.Butaca.Numero<br />*@
+                                        
+                                    </p>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="qr-code text-center">
+                                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=@ticket.Id_Tickets" alt="Código QR" class="img-fluid" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer text-center">
+                            <a href="#" class="btn btn-outline-primary btn-sm" onclick="window.print();">
+                                <i class="fas fa-print"></i> Imprimir
+                            </a>
+                            <a href="#" class="btn btn-outline-secondary btn-sm">
+                                <i class="fas fa-download"></i> Descargar PDF
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+@section Styles {
+    <style>
+        .ticket-card {
+            transition: all 0.3s ease;
+            border: 1px solid #ddd;
+            overflow: hidden;
+        }
+        
+        .ticket-new {
+            border: 2px solid #28a745;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+            transform: translateY(-5px);
+        }
+        
+        .qr-code {
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            display: inline-block;
+        }
+        
+        @@media print {
+            .navbar, .footer, .btn, .alert {
+                display: none !important;
+            }
+            
+            .ticket-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+                margin-bottom: 20px;
+                border: 1px solid #000 !important;
+                box-shadow: none !important;
+            }
+            
+            body {
+                padding: 0;
+                margin: 0;
+            }
+            
+            .container {
+                width: 100%;
+                max-width: none;
+                padding: 0;
+                margin: 0;
+            }
+            
+            .col-md-6 {
+                width: 100% !important;
+                max-width: 100% !important;
+                flex: 0 0 100% !important;
+            }
+        }
+    </style>
+}

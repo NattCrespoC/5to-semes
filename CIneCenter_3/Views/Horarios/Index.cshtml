@@ -1,0 +1,128 @@
+﻿@model IEnumerable<ASP_MVC_Prueba.Models.Horarios>
+
+@{
+    ViewData["Title"] = "Administración de Horarios";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    
+    var currentWeekDays = ViewBag.CurrentWeekDays as List<DateTime>;
+    var nextWeekDays = ViewBag.NextWeekDays as List<DateTime>;
+    var timeSlots = ViewBag.TimeSlots as List<TimeSpan>;
+    var salas = ViewBag.Salas as List<ASP_MVC_Prueba.Models.Salas>;
+    var weekOffset = ViewBag.WeekOffset;
+    
+    string[] diasSemana = { "Jueves", "Viernes", "Sábado", "Domingo", "Lunes", "Martes", "Miércoles" };
+    
+    // Helper function to find horarios for a specific day, time and sala
+    Func<DateTime, TimeSpan, int, IEnumerable<ASP_MVC_Prueba.Models.Horarios>> GetHorarios = (day, time, salaId) => {
+        return Model.Where(h => 
+            h.FechaHora.Date == day.Date && 
+            h.FechaHora.Hour == time.Hours && 
+            h.FechaHora.Minute == time.Minutes &&
+            h.SalaId == salaId);
+    };
+}
+
+<div class="container-fluid">
+    <div class="row mb-3">
+        <div class="col">
+            <h4>Programación de Horarios</h4>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Create" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Nuevo Horario
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["SuccessMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            @TempData["ErrorMessage"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    }
+    
+    <!-- Week navigation tabs -->
+    <ul class="nav nav-tabs mb-4" id="weekTabs" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(weekOffset == 0 ? "active" : "")" 
+                    id="current-week-tab" 
+                    data-bs-toggle="tab" 
+                    data-bs-target="#current-week" 
+                    type="button" 
+                    role="tab" 
+                    aria-controls="current-week" 
+                    aria-selected="@(weekOffset == 0 ? "true" : "false")">
+                Semana Actual (@currentWeekDays[0].ToString("dd/MM") - @currentWeekDays[6].ToString("dd/MM"))
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link @(weekOffset == 1 ? "active" : "")" 
+                    id="next-week-tab" 
+                    data-bs-toggle="tab" 
+                    data-bs-target="#next-week" 
+                    type="button" 
+                    role="tab" 
+                    aria-controls="next-week" 
+                    aria-selected="@(weekOffset == 1 ? "true" : "false")">
+                Próxima Semana (@nextWeekDays[0].ToString("dd/MM") - @nextWeekDays[6].ToString("dd/MM"))
+            </button>
+        </li>
+    </ul>
+
+    <!-- Week content -->
+    <div class="tab-content" id="weekTabsContent">
+        <!-- Current Week Content -->
+        <div class="tab-pane fade @(weekOffset == 0 ? "show active" : "")" id="current-week" role="tabpanel" aria-labelledby="current-week-tab">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>Semana: @currentWeekDays[0].ToString("dd/MM/yyyy") - @currentWeekDays[6].ToString("dd/MM/yyyy")</h5>
+                <a href="@Url.Action("Index", new { weekOffset = 1 })" class="btn btn-outline-primary btn-sm">
+                    Ver Próxima Semana <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            
+            @await Html.PartialAsync("_WeekSchedule", Tuple.Create(Model, currentWeekDays, timeSlots, salas, diasSemana, GetHorarios))
+        </div>
+        
+        <!-- Next Week Content -->
+        <div class="tab-pane fade @(weekOffset == 1 ? "show active" : "")" id="next-week" role="tabpanel" aria-labelledby="next-week-tab">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h5>Semana: @nextWeekDays[0].ToString("dd/MM/yyyy") - @nextWeekDays[6].ToString("dd/MM/yyyy")</h5>
+                <a href="@Url.Action("Index", new { weekOffset = 0 })" class="btn btn-outline-primary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Ver Semana Actual
+                </a>
+            </div>
+            
+            @await Html.PartialAsync("_WeekSchedule", Tuple.Create(Model, nextWeekDays, timeSlots, salas, diasSemana, GetHorarios))
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        // Enable tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        
+        // Handle tab navigation via URL
+        document.addEventListener("DOMContentLoaded", function() {
+            // Activate tab based on weekOffset
+            var weekOffset = @weekOffset;
+            if (weekOffset == 1) {
+                document.getElementById('next-week-tab').click();
+            } else {
+                document.getElementById('current-week-tab').click();
+            }
+        });
+    </script>
+}

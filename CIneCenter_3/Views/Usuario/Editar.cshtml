@@ -1,0 +1,73 @@
+@model ASP_MVC_Prueba.Models.Usuarios
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Editar Usuario";
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">
+        <i class="fas fa-user-edit me-2 text-primary"></i>Editar Usuario
+    </h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item"><a asp-action="AdminUsuarios">Usuarios</a></li>
+        <li class="breadcrumb-item active">Editar</li>
+    </ol>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header">
+            <i class="fas fa-user me-1"></i>
+            Información del usuario
+        </div>
+        <div class="card-body">
+            <form asp-action="Editar" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Id_Usuarios" />
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label asp-for="NombreCompleto" class="form-label"><i class="fas fa-user me-1"></i> Nombre Completo</label>
+                            <input asp-for="NombreCompleto" class="form-control" />
+                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"><i class="fas fa-envelope me-1"></i> Correo Electrónico</label>
+                            <input asp-for="Email" class="form-control" type="email" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="PasswordHash" class="form-label"><i class="fas fa-lock me-1"></i> Contraseña</label>
+                            <input asp-for="PasswordHash" class="form-control" />
+                            <span asp-validation-for="PasswordHash" class="text-danger"></span>
+                            <small class="text-muted"><i class="fas fa-info-circle"></i> La contraseña se guarda en texto plano.</small>
+                        </div>
+                        
+                        <div class="form-check mb-3">
+                            <input class="form-check-input" id="EsAdmin" name="EsAdmin" type="checkbox" value="true" checked="@(Model.EsAdmin == true)" />
+                            <input name="EsAdmin" type="hidden" value="false" />
+                            <label class="form-check-label" for="EsAdmin">
+                                <i class="fas fa-user-shield me-1 text-warning"></i> Es Administrador
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-between mt-4">
+                    <a asp-action="AdminUsuarios" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Volver
+                    </a>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>Guardar cambios
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,104 @@
+/* Estilos para el reloj digital */
+.digital-clock-container {
+    position: absolute;
+    top: 0;
+    right: 0; /* Cambiado de left a right para posicionarlo a la derecha */
+    padding: 8px; /* Reducido el padding */
+    z-index: 101;
+}
+
+.digital-clock {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(153, 51, 204, 0.5) 100%);
+    border-radius: 8px; /* Reducido el border-radius */
+    padding: 6px 12px; /* Reducido el padding */
+    color: var(--text-color);
+    font-family: 'Orbitron', sans-serif;
+    width: auto;
+    display: inline-flex;
+    flex-direction: column;
+    box-shadow: 0 0 10px rgba(0, 204, 255, 0.5), 
+                inset 0 0 8px rgba(255, 204, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    transform: translateZ(0);
+    transition: all 0.3s ease;
+}
+
+.digital-clock:hover {
+    box-shadow: 0 0 15px rgba(0, 204, 255, 0.7), 
+                inset 0 0 12px rgba(255, 204, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+.digital-clock .time {
+    font-size: 1.2rem; /* Reducido el tamaño de la fuente */
+    font-weight: bold;
+    color: var(--accent-color);
+    text-shadow: 0 0 8px rgba(255, 204, 0, 0.7);
+    letter-spacing: 1px; /* Reducido el espaciado */
+    text-align: center;
+}
+
+.digital-clock .date {
+    font-size: 0.7rem; /* Reducido el tamaño de la fuente */
+    opacity: 0.8;
+    margin-top: 1px;
+    text-align: center;
+    color: var(--gradient-start);
+}
+
+/* Animación para los números al cambiar */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.time-changed {
+    animation: pulse 0.5s ease-in-out;
+}
+
+/* Media queries para adaptabilidad */
+@media (max-width: 768px) {
+    .digital-clock-container {
+        position: relative;
+        width: 100%;
+        padding: 4px;
+        display: flex;
+        justify-content: center;
+    }
+    
+    .digital-clock {
+        margin-bottom: 8px;
+    }
+    
+    .digital-clock .time {
+        font-size: 1rem;
+    }
+    
+    .digital-clock .date {
+        font-size: 0.6rem;
+    }
+}
+
+/* Efecto neon para números especiales como :00:00 */
+.time-special {
+    text-shadow: 0 0 8px var(--primary-color), 
+                 0 0 16px var(--primary-color), 
+                 0 0 24px var(--primary-color);
+    animation: neon 1.5s infinite alternate;
+}
+
+@keyframes neon {
+    from {
+        text-shadow: 0 0 8px var(--primary-color), 
+                     0 0 16px var(--primary-color);
+    }
+    to {
+        text-shadow: 0 0 4px var(--primary-color), 
+                     0 0 8px var(--primary-color), 
+                     0 0 12px var(--primary-color), 
+                     0 0 16px var(--primary-color), 
+                     0 0 24px var(--primary-color);
+    }
+}

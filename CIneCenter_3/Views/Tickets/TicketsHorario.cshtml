@@ -1,0 +1,240 @@
+@model List<ASP_MVC_Prueba.Models.Tickets>
+@{
+    ViewData["Title"] = "Tickets por Horario";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var horario = ViewBag.Horario as ASP_MVC_Prueba.Models.Horarios;
+}
+
+<div class="container-fluid px-4">
+    <h1 class="mt-4">
+        <i class="fas fa-ticket-alt me-2 text-primary"></i>Tickets de Función
+    </h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item"><a asp-controller="Home" asp-action="Index">Dashboard</a></li>
+        <li class="breadcrumb-item"><a asp-action="Index">Tickets por Película</a></li>
+        <li class="breadcrumb-item">
+            <a asp-action="HorariosPelicula" asp-route-id="@horario?.PeliculaId">
+                Horarios de @horario?.Pelicula?.Titulo
+            </a>
+        </li>
+        <li class="breadcrumb-item active">Tickets de Función</li>
+    </ol>
+
+    <div class="card mb-4">
+        <div class="card-header bg-primary text-white">
+            <i class="fas fa-info-circle me-1"></i>
+            Información de la Función
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong><i class="fas fa-film me-2"></i>Película:</strong> @horario?.Pelicula?.Titulo</p>
+                    <p><strong><i class="fas fa-door-open me-2"></i>Sala:</strong> @horario?.Sala?.Nombre</p>
+                    <p><strong><i class="fas fa-dollar-sign me-2"></i>Precio:</strong> $@(horario?.Precio.ToString("N2") ?? "0.00")</p>
+                </div>
+                <div class="col-md-6">
+                    <p>
+                        <strong><i class="fas fa-calendar-day me-2"></i>Fecha:</strong> 
+                        @(horario?.FechaHora.ToShortDateString() ?? "N/A")
+                    </p>
+                    <p>
+                        <strong><i class="fas fa-clock me-2"></i>Hora:</strong> 
+                        @(horario?.FechaHora.ToShortTimeString() ?? "N/A")
+                    </p>
+                    <p>
+                        <strong><i class="fas fa-ticket-alt me-2"></i>Total Tickets Vendidos:</strong> 
+                        @Model.Count
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header">
+            <i class="fas fa-list me-1"></i>
+            Listado de Tickets
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle mb-0">
+                    <thead class="table-light">
+                        <tr>
+                            <th>
+                                <i class="fas fa-hashtag me-2 text-primary"></i>
+                                ID
+                            </th>
+                            <th>
+                                <i class="fas fa-user me-2 text-primary"></i>
+                                Cliente
+                            </th>
+                            <th>
+                                <i class="fas fa-couch me-2 text-primary"></i>
+                                Asiento
+                            </th>
+                            <th>
+                                <i class="fas fa-calendar-alt me-2 text-primary"></i>
+                                Fecha Compra
+                            </th>
+                            <th>
+                                <i class="fas fa-dollar-sign me-2 text-primary"></i>
+                                Precio
+                            </th>
+                            <th>
+                                <i class="fas fa-money-bill-wave me-2 text-primary"></i>
+                                Estado Pago
+                            </th>
+                            <th>
+                                <i class="fas fa-file-invoice-dollar me-2 text-primary"></i>
+                                Factura
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var ticket in Model)
+                        {
+                            <tr>
+                                <td>@ticket.Id_Tickets</td>
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-user-circle fs-4 me-2 text-secondary"></i>
+                                        <span>@(ticket.Usuario?.NombreCompleto ?? "Usuario no disponible")</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (ticket.Butaca != null)
+                                    {
+                                        <span class="badge bg-info">@ticket.Butaca.Id_Butacas</span>
+                                    }
+                                    else if (!string.IsNullOrEmpty(ticket.Butaca.Numero))
+                                    {
+                                        <span class="badge bg-info">@ticket.Butaca.Numero</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">No especificado</span>
+                                    }
+                                </td>
+                                <td>
+                                    @(ticket.FechaCompra?.ToString("dd/MM/yyyy HH:mm") ?? "N/A")
+                                </td>
+                                <td>
+                                    $@(ticket.Horario?.Precio.ToString("N2") ?? "0.00")
+                                </td>
+                                <td>
+                                    @if (ticket.Pagos != null)
+                                    {
+                                        <span class="badge bg-success">
+                                            <i class="fas fa-check-circle me-1"></i>
+                                            @ticket.Pagos.Estado
+                                        </span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-warning">
+                                            <i class="fas fa-exclamation-circle me-1"></i>
+                                            Sin pago
+                                        </span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (ticket.Facturas != null)
+                                    {
+                                        <button type="button" class="btn btn-sm btn-outline-primary show-factura" 
+                                                data-bs-toggle="modal" data-bs-target="#facturaModal"
+                                                data-id="@ticket.Facturas.Id_Facturas"
+                                                data-cuf="@ticket.Facturas.CUF"
+                                                data-fecha="@ticket.Facturas.Fecha.ToString("dd/MM/yyyy HH:mm")">
+                                            <i class="fas fa-file-invoice me-1"></i>Ver
+                                        </button>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-secondary">Sin factura</span>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                        @if (Model.Count == 0)
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center py-4">
+                                    <div class="alert alert-info mb-0">
+                                        <i class="fas fa-info-circle me-2"></i>No hay tickets vendidos para este horario
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-3 mb-5">
+        @if (horario != null)
+        {
+            <a asp-action="HorariosPelicula" asp-route-id="@horario.PeliculaId" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Horarios
+            </a>
+        }
+        else
+        {
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left me-2"></i>Volver a Películas
+            </a>
+        }
+    </div>
+</div>
+
+<!-- Modal para mostrar factura -->
+<div class="modal fade" id="facturaModal" tabindex="-1" aria-labelledby="facturaModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="facturaModalLabel">Detalles de Factura</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <i class="fas fa-file-invoice-dollar me-2"></i>Factura
+                    </div>
+                    <div class="card-body">
+                        <p><strong>ID Factura:</strong> <span id="factura-id"></span></p>
+                        <p><strong>CUF:</strong> <span id="factura-cuf"></span></p>
+                        <p><strong>Fecha:</strong> <span id="factura-fecha"></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar tooltips
+            var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            });
+            
+            // Manejo del modal de factura
+            document.querySelectorAll('.show-factura').forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const cuf = this.getAttribute('data-cuf');
+                    const fecha = this.getAttribute('data-fecha');
+                    
+                    document.getElementById('factura-id').textContent = id;
+                    document.getElementById('factura-cuf').textContent = cuf;
+                    document.getElementById('factura-fecha').textContent = fecha;
+                });
+            });
+        });
+    </script>
+}

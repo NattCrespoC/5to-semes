@@ -1,0 +1,123 @@
+﻿@model ASP_MVC_Prueba.Models.Horarios
+
+@{
+    ViewData["Title"] = "Crear Horario";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col">
+            <h4>Crear Nuevo Horario</h4>
+        </div>
+        <div class="col-auto">
+            <a asp-action="Index" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Volver a la Lista
+            </a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8 col-lg-6 mx-auto">
+            <div class="card">
+                <div class="card-body">
+                    <form asp-action="Create">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="SalaId" class="form-label">Sala</label>
+                            <select asp-for="SalaId" class="form-select" asp-items="ViewBag.SalaId">
+                                <option value="">-- Seleccione una Sala --</option>
+                            </select>
+                            <span asp-validation-for="SalaId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="PeliculaId" class="form-label">Película</label>
+                            <select asp-for="PeliculaId" class="form-select" asp-items="ViewBag.PeliculaId">
+                                <option value="">-- Seleccione una Película --</option>
+                            </select>
+                            <span asp-validation-for="PeliculaId" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="FechaHora" class="form-label">Fecha y Hora</label>
+                            <input asp-for="FechaHora" class="form-control" type="datetime-local" value="@(Model.FechaHora != default ? Model.FechaHora.ToString("yyyy-MM-ddTHH:mm") : DateTime.Now.ToString("yyyy-MM-ddTHH:mm"))" />
+                            <span asp-validation-for="FechaHora" class="text-danger"></span>
+                            <small class="form-text text-muted">
+                                Seleccione una fecha y hora para la función.
+                                @if (Model.FechaHora != default)
+                                {
+                                    <span class="text-info">
+                                        (Día seleccionado: @Model.FechaHora.ToString("dddd, dd/MM/yyyy", new System.Globalization.CultureInfo("es-ES")))
+                                    </span>
+                                }
+                            </small>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Precio" class="form-label">Precio <span class="text-danger">*</span></label>
+                            <div class="input-group">
+                                <span class="input-group-text">$</span>
+                                <input asp-for="Precio" class="form-control" type="number" step="0.01" min="0.01" required 
+                                       oninvalid="this.setCustomValidity('El precio debe ser mayor que cero')" 
+                                       oninput="this.setCustomValidity('')" />
+                            </div>
+                            <span asp-validation-for="Precio" class="text-danger"></span>
+                            <small class="form-text text-muted">El precio debe ser mayor a cero.</small>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="aplicarSemanaCompleta" name="aplicarSemanaCompleta" value="true" />
+                            <input type="hidden" name="aplicarSemanaCompleta" value="false" />
+                            <label class="form-check-label" for="aplicarSemanaCompleta">
+                                Aplicar a toda la semana
+                            </label>
+                            <small class="form-text text-muted d-block">
+                                Se creará un horario para cada día de la semana. Si ya existe una película programada en algún día a la misma hora, se omitirá ese día.
+                            </small>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        $(document).ready(function () {
+            // Additional form validation
+            $('form').submit(function (e) {
+                // Check if price is valid
+                var precio = parseFloat($('#Precio').val());
+                if (isNaN(precio) || precio <= 0) {
+                    e.preventDefault();
+                    alert('El precio debe ser mayor que cero');
+                    $('#Precio').focus();
+                    return false;
+                }
+                
+                // Validate that required fields are filled
+                var salaId = $('#SalaId').val();
+                var peliculaId = $('#PeliculaId').val();
+                var fechaHora = $('#FechaHora').val();
+                
+                if (!salaId || !peliculaId || !fechaHora) {
+                    e.preventDefault();
+                    alert('Por favor complete todos los campos obligatorios');
+                    return false;
+                }
+                
+                return true;
+            });
+        });
+    </script>
+}

@@ -1,0 +1,329 @@
+/* 
+   Layout Components CSS
+   Contains shared styles for headers, footers, and other common elements
+   that repeat across multiple pages
+*/
+
+/* ====== HEADER STYLES ====== */
+header {
+    background-color: rgba(0, 0, 0, 0.9);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0.5rem 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+#cine-logo {
+    height: 50px;
+    margin-right: 1rem;
+}
+
+.menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li {
+    margin: 0 1rem;
+}
+
+.menu a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.menu a:hover {
+    color: var(--accent-color);
+}
+
+/* Animated underline effect for menu items */
+.menu a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--accent-color);
+    transition: width 0.3s ease;
+}
+
+.menu a:hover::after {
+    width: 100%;
+}
+
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.auth-btn {
+    padding: 8px 15px;
+    background: transparent;
+    color: #fff;
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Mobile menu button (hamburger) */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+/* ====== FOOTER STYLES ====== */
+footer {
+    background-color: var(--dark-bg);
+    color: #fff;
+    padding: 2rem 0;
+    margin-top: 3rem;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin-bottom: 1rem;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.footer-section p {
+    margin: 8px 0;
+    font-size: 0.9rem;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-section a:hover {
+    color: var(--accent-color);
+}
+
+.footer-section i {
+    margin-right: 8px;
+    color: var(--primary-color);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+/* Social Media Icons in Footer */
+.social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.social-icons a.facebook {
+    background-color: #3b5998;
+}
+
+.social-icons a.instagram {
+    background: linear-gradient(45deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+}
+
+.social-icons a.twitter {
+    background-color: #1da1f2;
+}
+
+.social-icons a.youtube {
+    background-color: #ff0000;
+}
+
+.social-icons a.whatsapp {
+    background-color: #25d366;
+}
+
+.social-icons a.tiktok {
+    background-color: #000000;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Maps Container */
+.maps-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.maps-container h3 {
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.google-map {
+    width: 100%;
+    height: 300px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.google-map iframe {
+    border: none;
+}
+
+/* Copyright Section */
+.copyright {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    font-size: 0.9rem;
+}
+
+/* ====== RESPONSIVE STYLES ====== */
+@media (max-width: 900px) {
+    nav {
+        padding: 0.5rem 1rem;
+        flex-wrap: wrap;
+    }
+    
+    .logo {
+        flex: 1;
+    }
+    
+    #cine-logo {
+        height: 40px;
+    }
+    
+    .menu-toggle {
+        display: block;
+        order: 3;
+    }
+    
+    .menu-container {
+        flex-basis: 100%;
+        order: 4;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height 0.5s ease;
+    }
+    
+    .menu {
+        flex-direction: column;
+        padding: 0.5rem 0;
+    }
+    
+    .menu li {
+        margin: 10px 0;
+        text-align: center;
+    }
+    
+    .auth-buttons {
+        margin-right: 15px;
+    }
+    
+    .auth-btn {
+        padding: 5px 10px;
+        font-size: 0.9rem;
+    }
+    
+    /* When mobile menu is open */
+    .menu-open .menu-container {
+        max-height: 500px; /* Aumentado de 300px para mostrar más contenido */
+    }
+
+    /* Estilos para los elementos de autenticación en el menú */
+    .menu-auth-item {
+        display: block;
+        margin: 15px 0;
+        text-align: center;
+    }
+    
+    .menu-auth-item .auth-btn {
+        width: 80%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+}
+
+@media (max-width: 600px) {
+    .auth-buttons {
+        gap: 5px;
+    }
+    
+    .auth-btn {
+        font-size: 0.8rem;
+    }
+    
+    #cine-logo {
+        height: 35px;
+    }
+}

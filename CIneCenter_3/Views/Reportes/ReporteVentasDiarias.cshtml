@@ -1,0 +1,287 @@
+@model List<ASP_MVC_Prueba.Models.ReporteVentaDiariaViewModel>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Reporte de Ventas Diarias";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="m-0"><i class="fas fa-calendar-day me-2"></i>Tendencia de Ventas Diarias (Últimos 30 días)</h5>
+            </div>
+            <div class="card-body">
+                <div class="chart-container" style="position: relative; height:300px; width:100%">
+                    <canvas id="ventasChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body text-center">
+                <h6 class="text-uppercase">Total Tickets</h6>
+                <h2 class="mb-0">@Model.Sum(v => v.TotalTickets)</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body text-center">
+                <h6 class="text-uppercase">Ingresos Totales</h6>
+                <h2 class="mb-0">@Model.Sum(v => v.IngresosTotales).ToString("N2") Bs</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body text-center">
+                <h6 class="text-uppercase">Promedio Diario</h6>
+                <h2 class="mb-0">@(Model.Any() ? (Model.Sum(v => v.IngresosTotales) / Model.Count).ToString("N2") : "0.00") Bs</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-dark">
+            <div class="card-body text-center">
+                <h6 class="text-uppercase">Precio Promedio</h6>
+                <h2 class="mb-0">@(Model.Sum(v => v.TotalTickets) > 0 ? (Model.Sum(v => v.IngresosTotales) / Model.Sum(v => v.TotalTickets)).ToString("N2") : "0.00") Bs</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-list me-2"></i>Ventas por Día</h6>
+        <div>
+            <button class="btn btn-sm btn-outline-primary" onclick="exportarPDF()">
+                <i class="fas fa-file-pdf me-1"></i> Exportar PDF
+            </button>
+            <button class="btn btn-sm btn-outline-success" onclick="exportarExcel()">
+                <i class="fas fa-file-excel me-1"></i> Exportar EXCEL
+            </button>
+            <button class="btn btn-sm btn-outline-info" onclick="exportarCSV()">
+                <i class="fas fa-file-csv me-1"></i> Exportar CSV
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle me-2"></i>@ViewBag.ErrorMessage
+            </div>
+        }
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="reporteTable" width="100%" cellspacing="0">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">Fecha</th>
+                        <th class="text-center">Tickets</th>
+                        <th class="text-center">Funciones</th>
+                        <th class="text-center">Promedio por Función</th>
+                        <th class="text-center">Precio Promedio</th>
+                        <th class="text-end">Ingresos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td class="text-center">@item.Fecha.ToString("dddd, dd/MM/yyyy")</td>
+                                <td class="text-center">
+                                    <span class="badge bg-success">@item.TotalTickets</span>
+                                </td>
+                                <td class="text-center">@item.CantidadFunciones</td>
+                                <td class="text-center">
+                                    @(item.CantidadFunciones > 0 ? (item.TotalTickets / (float)item.CantidadFunciones).ToString("0.0") : "0.0")
+                                </td>
+                                <td class="text-center">
+                                    @item.PromedioTicketPrecio.ToString("N2") Bs
+                                </td>
+                                <td class="text-end">@item.IngresosTotales.ToString("N2") Bs</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <div class="alert alert-info mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>No hay datos disponibles
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="table-dark">
+                    <tr>
+                        <th class="text-end">TOTALES:</th>
+                        <th class="text-center">@Model.Sum(v => v.TotalTickets)</th>
+                        <th class="text-center">@Model.Sum(v => v.CantidadFunciones)</th>
+                        <th class="text-center">
+                            @(Model.Sum(v => v.CantidadFunciones) > 0 ? (Model.Sum(v => v.TotalTickets) / (float)Model.Sum(v => v.CantidadFunciones)).ToString("0.0") : "0.0")
+                        </th>
+                        <th class="text-center">
+                            @(Model.Sum(v => v.TotalTickets) > 0 ? (Model.Sum(v => v.IngresosTotales) / Model.Sum(v => v.TotalTickets)).ToString("N2") : "0.00") Bs
+                        </th>
+                        <th class="text-end">@Model.Sum(v => v.IngresosTotales).ToString("N2") Bs</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos para el gráfico de ventas
+            const ventasData = @Html.Raw(Json.Serialize(Model.OrderBy(v => v.Fecha).Select(v => new { fecha = v.Fecha.ToString("dd/MM"), tickets = v.TotalTickets, ingresos = v.IngresosTotales })));
+            
+            // Gráfico de ventas
+            const ctxVentas = document.getElementById('ventasChart').getContext('2d');
+            new Chart(ctxVentas, {
+                type: 'line',
+                data: {
+                    labels: ventasData.map(v => v.fecha),
+                    datasets: [
+                        {
+                            label: 'Tickets vendidos',
+                            data: ventasData.map(v => v.tickets),
+                            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 2,
+                            yAxisID: 'y',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Ingresos (Bs)',
+                            data: ventasData.map(v => v.ingresos),
+                            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                            borderColor: 'rgba(255, 99, 132, 1)',
+                            borderWidth: 2,
+                            yAxisID: 'y1',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            type: 'linear',
+                            display: true,
+                            position: 'left',
+                            title: {
+                                display: true,
+                                text: 'Tickets'
+                            }
+                        },
+                        y1: {
+                            type: 'linear',
+                            display: true,
+                            position: 'right',
+                            title: {
+                                display: true,
+                                text: 'Ingresos (Bs)'
+                            },
+                            grid: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+                            },
+                        }
+                    }
+                }
+            });
+        });
+        
+        function exportarPDF() {
+            // Create a form to submit for PDF download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'VentasDiarias';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'PDF';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        function exportarExcel() {
+            // Create a form to submit for Excel download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'VentasDiarias';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'Excel';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        function exportarCSV() {
+            // Create a form to submit for CSV download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'VentasDiarias';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'CSV';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+    </script>
+}

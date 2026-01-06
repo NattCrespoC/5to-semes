@@ -1,0 +1,259 @@
+@model List<ASP_MVC_Prueba.Models.ReporteGeneroViewModel>
+@{
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    ViewData["Title"] = "Reporte de Géneros Más Populares";
+}
+
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="m-0"><i class="fas fa-theater-masks me-2"></i>Distribución de Ventas por Género</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="chart-container" style="position: relative; height:300px; width:100%">
+                            <canvas id="generosChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h6 class="border-bottom pb-2 mb-3">Resumen de Géneros</h6>
+                        <ul class="list-group">
+                            @foreach (var item in Model.Take(3))
+                            {
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>@item.Genero</span>
+                                    <span class="badge bg-primary rounded-pill">@item.PorcentajeVentas.ToString("0.0")%</span>
+                                </li>
+                            }
+                        </ul>
+                        <div class="alert alert-info mt-3">
+                            <i class="fas fa-info-circle me-2"></i>Los géneros más populares generan el 
+                            @(Model.Take(3).Sum(g => g.PorcentajeVentas).ToString("0.0"))% de las ventas.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 d-flex justify-content-between align-items-center">
+        <h6 class="m-0 font-weight-bold text-primary"><i class="fas fa-list me-2"></i>Géneros por Popularidad</h6>
+        <div>
+            <button class="btn btn-sm btn-outline-primary" onclick="exportarPDF()">
+                <i class="fas fa-file-pdf me-1"></i> Exportar PDF
+            </button>
+            <button class="btn btn-sm btn-outline-success" onclick="exportarExcel()">
+                <i class="fas fa-file-excel me-1"></i> Exportar EXCEL
+            </button>
+            <button class="btn btn-sm btn-outline-info" onclick="exportarCSV()">
+                <i class="fas fa-file-csv me-1"></i> Exportar CSV
+            </button>
+        </div>
+    </div>
+    <div class="card-body">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle me-2"></i>@ViewBag.ErrorMessage
+            </div>
+        }
+        
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" id="reporteTable" width="100%" cellspacing="0">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-center">#</th>
+                        <th>Género</th>
+                        <th class="text-center">Películas</th>
+                        <th class="text-center">Tickets Vendidos</th>
+                        <th class="text-center">% del Total</th>
+                        <th class="text-end">Ingresos Totales</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null && Model.Any())
+                    {
+                        @for (int i = 0; i < Model.Count; i++)
+                        {
+                            var item = Model[i];
+                            <tr>
+                                <td class="text-center">@(i + 1)</td>
+                                <td>
+                                    <span class="badge @(i < 3 ? "bg-success" : "bg-info")">@item.Genero</span>
+                                </td>
+                                <td class="text-center">@item.CantidadPeliculas</td>
+                                <td class="text-center">@item.TotalTickets</td>
+                                <td class="text-center">
+                                    <div class="progress" style="height: 20px;">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: @item.PorcentajeVentas%;" 
+                                             aria-valuenow="@item.PorcentajeVentas" aria-valuemin="0" aria-valuemax="100">
+                                            @item.PorcentajeVentas.ToString("0.0")%
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="text-end">@item.IngresosTotales.ToString("N2") Bs</td>
+                            </tr>
+                        }
+                    }
+                    else
+                    {
+                        <tr>
+                            <td colspan="6" class="text-center">
+                                <div class="alert alert-info mb-0">
+                                    <i class="fas fa-info-circle me-2"></i>No hay datos disponibles
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot class="table-dark">
+                    <tr>
+                        <th colspan="3" class="text-end">TOTALES:</th>
+                        <th class="text-center">@Model.Sum(g => g.TotalTickets)</th>
+                        <th class="text-center">100%</th>
+                        <th class="text-end">@Model.Sum(g => g.IngresosTotales).ToString("N2") Bs</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Datos para el gráfico de géneros
+            const generosData = @Html.Raw(Json.Serialize(Model.Select(g => new { label = g.Genero, value = g.TotalTickets })));
+            
+            // Gráfico de géneros
+            const ctxGeneros = document.getElementById('generosChart').getContext('2d');
+            new Chart(ctxGeneros, {
+                type: 'pie',
+                data: {
+                    labels: generosData.map(g => g.label),
+                    datasets: [{
+                        label: 'Tickets vendidos',
+                        data: generosData.map(g => g.value),
+                        backgroundColor: [
+                            'rgba(255, 99, 132, 0.7)',
+                            'rgba(54, 162, 235, 0.7)',
+                            'rgba(255, 206, 86, 0.7)',
+                            'rgba(75, 192, 192, 0.7)',
+                            'rgba(153, 102, 255, 0.7)',
+                            'rgba(255, 159, 64, 0.7)',
+                            'rgba(199, 199, 199, 0.7)',
+                        ],
+                        borderColor: [
+                            'rgba(255, 99, 132, 1)',
+                            'rgba(54, 162, 235, 1)',
+                            'rgba(255, 206, 86, 1)',
+                            'rgba(75, 192, 192, 1)',
+                            'rgba(153, 102, 255, 1)',
+                            'rgba(255, 159, 64, 1)',
+                            'rgba(199, 199, 199, 1)',
+                        ],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Distribución de Tickets por Género'
+                        }
+                    }
+                }
+            });
+        });
+        
+        function exportarPDF() {
+            // Create a form to submit for PDF download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'Generos';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'PDF';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        function exportarExcel() {
+            // Create a form to submit for Excel download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'Generos';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'Excel';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+
+        function exportarCSV() {
+            // Create a form to submit for CSV download
+            var form = document.createElement('form');
+            form.method = 'post';
+            form.action = '@Url.Action("ExportReporte", "Reportes")';
+            form.style.display = 'none';
+            
+            // Add report type
+            var reportTypeInput = document.createElement('input');
+            reportTypeInput.type = 'hidden';
+            reportTypeInput.name = 'ReportType';
+            reportTypeInput.value = 'Generos';
+            form.appendChild(reportTypeInput);
+            
+            // Add format type
+            var formatInput = document.createElement('input');
+            formatInput.type = 'hidden';
+            formatInput.name = 'Format';
+            formatInput.value = 'CSV';
+            form.appendChild(formatInput);
+            
+            // Submit the form
+            document.body.appendChild(form);
+            form.submit();
+            document.body.removeChild(form);
+        }
+    </script>
+}

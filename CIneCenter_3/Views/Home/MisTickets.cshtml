@@ -1,0 +1,369 @@
+﻿@model IEnumerable<ASP_MVC_Prueba.Models.Tickets>
+
+@section Styles {
+    <link href="~/css/tickets.css" rel="stylesheet" />
+    <style>
+        /* Add a namespace class to contain all our styles */
+        .tickets-page-container {
+            /* Container-specific styles */
+        }
+
+            .tickets-page-container .ticket-layout {
+                display: flex;
+                gap: 20px;
+                margin-bottom: 30px;
+            }
+
+            .tickets-page-container .ticket {
+                flex: 1;
+                max-width: 500px;
+                border: 2px dashed #333;
+                border-radius: 8px;
+                padding: 20px;
+                background-color: #fff;
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+                position: relative;
+                overflow: hidden;
+            }
+
+                .tickets-page-container .ticket:before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 15px;
+                    right: 15px;
+                    height: 10px;
+                    border-bottom: 2px dashed #ccc;
+                }
+
+            .tickets-page-container .ticket-header {
+                display: flex;
+                justify-content: space-between;
+                border-bottom: 1px dashed #999;
+                padding-bottom: 10px;
+                margin-bottom: 15px;
+            }
+
+            .tickets-page-container .ticket-title {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #fff;
+                margin: 0;
+            }
+
+            .tickets-page-container .ticket-stub {
+                background: #f0f0f0;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.8rem;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .tickets-page-container .ticket-content {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .tickets-page-container .ticket-divider {
+                border-top: 1px dashed #ccc;
+                margin: 10px 0;
+            }
+
+            .tickets-page-container .ticket-info {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 5px;
+            }
+
+            .tickets-page-container .ticket-label {
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .tickets-page-container .ticket-value {
+                color: #fff;
+            }
+
+            .tickets-page-container .ticket-qr {
+                align-self: center;
+                margin: 15px 0;
+            }
+
+            .tickets-page-container .ticket-sidebar {
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                width: 150px;
+            }
+
+            .tickets-page-container .ticket-btn {
+                padding: 10px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-weight: bold;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 5px;
+                text-decoration: none;
+                transition: all 0.3s ease;
+            }
+
+            .tickets-page-container .btn-print {
+                background-color: #007bff;
+                color: white;
+            }
+
+            .tickets-page-container .btn-download {
+                background-color: #28a745;
+                color: white;
+            }
+
+            .tickets-page-container .btn-details {
+                background-color: #17a2b8;
+                color: white;
+            }
+
+                .tickets-page-container .btn-print:hover,
+                .tickets-page-container .btn-download:hover,
+                .tickets-page-container .btn-details:hover {
+                    opacity: 0.9;
+                    transform: translateY(-2px);
+                }
+
+            .tickets-page-container .cinema-logo {
+                text-align: center;
+                margin-bottom: 10px;
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #fff;
+            }
+
+            .tickets-page-container .ticket-footer {
+                text-align: center;
+                font-size: 0.8rem;
+                color: #777;
+                margin-top: 15px;
+                border-top: 1px dashed #ccc;
+                padding-top: 10px;
+            }
+
+            .tickets-page-container .page-header {
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .tickets-page-container .page-title {
+                font-size: 2rem;
+                color: #333;
+                margin-bottom: 5px;
+            }
+
+            .tickets-page-container .page-subtitle {
+                font-size: 1.1rem;
+                color: #fff;
+            }
+
+            .tickets-page-container .no-tickets-message {
+                text-align: center;
+                padding: 30px;
+                background-color: #f8f9fa;
+                border-radius: 8px;
+                margin-top: 20px;
+            }
+
+        @@media print {
+            .tickets-page-container .ticket-sidebar,
+            .tickets-page-container .page-header,
+            nav, footer {
+                display: none !important;
+            }
+
+            .tickets-page-container .ticket-layout {
+                display: block;
+            }
+
+            .tickets-page-container .ticket {
+                box-shadow: none;
+                max-width: 100%;
+                border: 1px dashed #fff;
+            }
+        }
+    </style>
+}
+
+<div class="tickets-page-container">
+    <div class="page-header">
+        <h1 class="page-title">Mis Tickets</h1>
+        <p class="page-subtitle">Disfruta de tus películas</p>
+    </div>
+
+    <div class="tickets-container">
+        @if (Model != null && Model.Any())
+        {
+            foreach (var ticket in Model)
+            {
+                string ticketId = $"ticket-{ticket.Id_Tickets}";
+
+                <div class="ticket-layout">
+                    <div class="ticket" id="@ticketId">
+                        <div class="cinema-logo">CineCenter</div>
+
+                        <div class="ticket-header">
+                            <h2 class="ticket-title">@ticket.Horario.Pelicula.Titulo</h2>
+                            <div class="ticket-stub">#@ticket.Id_Tickets</div>
+                        </div>
+
+
+                        <div class="ticket-divider"></div>
+                        <div class="ticket-content">
+                            <div class="seat-details">
+                                <div class="ticket-info">
+                                    <span class="ticket-label">Fecha:</span>
+                                    <span class="ticket-value">@ticket.Horario.FechaHora.ToShortDateString()</span>
+                                </div>
+                                <div class="ticket-info">
+                                    <span class="ticket-label">Hora:</span>
+                                    <span class="ticket-value">@ticket.Horario.FechaHora.ToString("HH:mm")</span>
+                                </div>
+                                <div class="ticket-info">
+                                    <span class="ticket-label">Sala:</span>
+                                    <span class="ticket-value">@ticket.Horario.Sala.Capacidad - @ticket.Horario.Sala.Tipo</span>
+                                </div>
+                                <div class="ticket-info">
+                                    <span class="ticket-label">Butaca:</span>
+                                    <span class="ticket-value">@ticket.Butaca.Numero</span>
+                                </div>
+                                <div class="ticket-info">
+                                    <span class="ticket-label">Comprado:</span>
+                                    <span class="ticket-value">@ticket.FechaCompra.ToString()</span>
+                                </div>
+                            </div>
+
+                            <div class="ticket-qr">
+                                @{
+                                    // Crear una clave única para el QR usando el ID del ticket y un hash de la fecha de compra
+                                    var uniqueKey = $"{ticket.Id_Tickets}_{ticket.FechaCompra.GetHashCode()}";
+                                    var qrData = new
+                                    {
+                                        ticket = new
+                                        {
+                                            id = ticket.Id_Tickets,
+                                            fechaCompra = ticket.FechaCompra,
+                                        },
+                                        horario = new
+                                        {
+                                            id = ticket.Horario.Id_Horarios,
+                                            fechaHora = ticket.Horario.FechaHora,
+                                        },
+                                        sala = new
+                                        {
+                                            capacidad = ticket.Horario.Sala.Capacidad,
+                                            tipo = ticket.Horario.Sala.Tipo
+                                        },
+                                        pelicula = new
+                                        {
+                                            titulo = ticket.Horario.Pelicula.Titulo,
+                                            duracion = ticket.Horario.Pelicula.Duracion
+                                        },
+                                        butaca = new
+                                        {
+                                            numero = ticket.Butaca.Numero
+                                        }
+                                    };
+                                    var qrDataString = System.Net.WebUtility.UrlEncode(Newtonsoft.Json.JsonConvert.SerializeObject(qrData));
+                                    var qrCodeUrl = $"https://api.qrserver.com/v1/create-qr-code/?size=200x200&data={qrDataString}&color=9933cc&bgcolor=ffffff";
+                                }
+                                <!-- Add the crossorigin attribute to the image to allow CORS capture -->
+                                <img src="@qrCodeUrl" alt="QR Code" width="150" height="150" crossorigin="anonymous" loading="eager" onerror="this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNTAiIGhlaWdodD0iMTUwIj48cmVjdCB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LXNpemU9IjE0IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjOTkzM2NjIiBkeT0iLjNlbSI+VGlja2V0ICNAQHRpY2tldC5JZF9UaWNrZXRzPC90ZXh0Pjwvc3ZnPg=='" />
+
+                                <!-- Add a hidden canvas that will be used as a fallback for html2canvas -->
+                                <canvas id="qr-canvas-@ticket.Id_Tickets" width="150" height="150" style="display:none;"></canvas>
+                            </div>
+
+                            <div class="ticket-footer">
+                                Gracias por su compra. Este ticket es válido únicamente para la función indicada.
+                                No se permiten cambios ni devoluciones.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="ticket-sidebar">
+                        <button class="ticket-btn btn-print" onclick="printTicket('@ticketId')">
+                            <i class="fas fa-print"></i> Imprimir
+                        </button>
+                        <button class="ticket-btn btn-download" onclick="downloadTicketAsImage('@ticketId')">
+											<i class="fas fa-download"></i> Descargar
+								</button>
+									   <a class="ticket-btn btn-details"
+												   href="https://siatanexo.impuestos.gob.bo/index.php/implementacion-servicios-facturacion/autenticacion/generacion-de-token" 
+												   target="_blank">
+													<i class="fas fa-receipt"></i> Factura SIAT
+												</a>
+                    </div>
+                             
+                </div>
+            }
+        }
+        else
+        {
+            <div class="no-tickets-message">
+                <h3>No tienes tickets comprados</h3>
+                <p>Explora nuestra cartelera y reserva tus entradas ahora</p>
+                <a asp-action="Index" class="ticket-btn btn-details">Ver películas</a>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="~/js/ticketFunctions.js"></script>
+    <script>
+        // Verificar que los scripts se cargaron correctamente
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM cargado completamente");
+
+            // Comprobar que las funciones existen
+            if (typeof printTicket === 'function' && typeof downloadTicketAsImage === 'function') {
+                console.log("Funciones de ticket cargadas correctamente");
+            } else {
+                console.error("Error: funciones de ticket no disponibles");
+            }
+
+            // Verificar que los botones tienen los eventos correctos
+            document.querySelectorAll('.btn-print').forEach(btn => {
+                console.log("Botón de impresión encontrado:", btn);
+            });
+
+            document.querySelectorAll('.btn-download').forEach(btn => {
+                console.log("Botón de descarga encontrado:", btn);
+            });
+
+            // Pre-cargar imágenes QR para mejorar compatibilidad
+            document.querySelectorAll('.ticket-qr img').forEach(img => {
+                img.crossOrigin = "anonymous"; // Permitir captura CORS
+
+                // Manejar errores de carga
+                img.addEventListener('error', function() {
+                    console.warn('Error cargando QR:', img.src);
+                });
+
+                // Preparar canvas fallback para cada QR
+                img.addEventListener('load', function() {
+                    const ticketId = img.closest('.ticket').id;
+                    const canvasId = `qr-canvas-${ticketId.split('-')[1]}`;
+                    const canvas = document.getElementById(canvasId);
+                    if (canvas) {
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                    }
+                });
+            });
+        });
+    </script>
+}
